@@ -4,50 +4,9 @@
     <meta charset="ITF-8">
 	<title>Desthood</title>
 	<link rel="stylesheet" type="text/css" href="../style3.css">
-	<!--[if lt IE 9]>
-	<script>
-	  document.CreateElement("article");
-	   document.createElement("aside");
-      document.createElement("footer");
-      document.createElement("header");
-      document.createElement("main");
-      document.createElement("nav");
-      document.createElement("section");
-	</script>
-	<![endif]-->
- 
-  <head>
-  <body>
-	<header class="banner">
-	  <h1> Desta Hailemariam</h1>
-	  	  
-	  <p> Ph.D. candidate, <span style="color: #FFFFCF"> <a style="text-decoration:none" href="http://www.binghamton.edu/ssie/index.html" target="_blank">Binghamton University </span> </a> </p>
-	  <p> Graduate Research Associate, Watson Institute for Systems Excellence - <a style="text-decoration:none" href="https://www.binghamton.edu/watson/research/wise/" target="_blank">WISE </span></a> </p>
-	   	
-	 	
-	</p>
-	  
-	  
-	</header>
-	
-	<nav>
-	  <ul>
-	    <li><a href="http://datascience-is-fun.com/">Home</a></li>
-	    <li><a href="http://datascience-is-fun.com/Profile/index.html">Profile</a></li>
-	    <li><a href="http://datascience-is-fun.com/R_models/index.html">Modeling with R</a></li>
-	    <li><a href="http://datascience-is-fun.com/Python_models/index.html">Modeling with Python</a></li>
-	  </ul> 
-	</nav>
-	
-	
-	
-	
-	
 
 
 
-
-<title>dplyr Package Tutorial</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -212,6 +171,29 @@ div#notebook {
     </script>
     <!-- End of mathjax configuration --></head>
 <body>
+
+<header class="banner">
+	  <h1> Desta Hailemariam</h1>
+	  	  
+	  <p> Ph.D. candidate, <span style="color: #FFFFCF"> <a style="text-decoration:none" href="http://www.binghamton.edu/ssie/index.html" target="_blank">Binghamton University </span> </a> </p>
+	  <p> Graduate Research Associate, Watson Institute for Systems Excellence - <a style="text-decoration:none" href="https://www.binghamton.edu/watson/research/wise/" target="_blank">WISE </span></a> </p>
+	   	
+	 	
+	</p>
+	  
+	  
+	</header>
+	
+	<nav>
+	  <ul>
+	    <li><a style="text-decoration:none" href="http://datascience-is-fun.com/">Home</a></li>
+	    <li><a style="text-decoration:none" href="http://datascience-is-fun.com/Profile.html">Profile</a></li>
+	    <li><a style="text-decoration:none" href="http://datascience-is-fun.com/R/index.html">Modeling with R</a></li>
+	    <li><a style="text-decoration:none" href="http://datascience-is-fun.com/Python/index.html">Modeling with Python</a></li>
+	  </ul> 
+	</nav>
+
+
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
@@ -220,18 +202,26 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="dplyr-package">dplyr package<a class="anchor-link" href="#dplyr-package">&#182;</a></h3>
-<br/>
-<p> The dplyr package is among the most important packages that make data analysis easier. This subsection use the dplyr package to analysis data.</p>
+<h2 id="Multi-class-Classification-in-R">Multi-class Classification in R<a class="anchor-link" href="#Multi-class-Classification-in-R">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Prediction-of-Claims">Prediction of Claims<a class="anchor-link" href="#Prediction-of-Claims">&#182;</a></h3><p>The cost of classifying a high-risk patient is always higher than the cost predicting a low-risk patient as a high-risk patient. This claims data for groups of people in the Medicare program is used to predict hospital costs. This data is publicly available in the US Center for Medicare and Medicaid Services (CMS) to help develop prediction models to predict hospital costs.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre>frame <span class="o">&lt;-</span> read.csv<span class="p">(</span><span class="s">&quot;stevens.csv&quot;</span><span class="p">,</span> stringsAsFactors<span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre>claims <span class="o">&lt;-</span> read.csv<span class="p">(</span><span class="s">&quot;ClaimsData.csv&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -241,49 +231,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="kp">head</span><span class="p">(</span>frame<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Docket</th><th scope=col>Term</th><th scope=col>Circuit</th><th scope=col>Issue</th><th scope=col>Petitioner</th><th scope=col>Respondent</th><th scope=col>LowerCourt</th><th scope=col>Unconst</th><th scope=col>Reverse</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>93-1408</td><td>1994</td><td>2nd</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>2</th><td>93-1577</td><td>1994</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>3</th><td>93-1612</td><td>1994</td><td>5th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>4</th><td>94-623</td><td>1994</td><td>1st</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>5</th><td>94-1175</td><td>1995</td><td>7th</td><td>JudicialPower</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>6</th><td>95-129</td><td>1995</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>1</td><td>0</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="kp">dim</span><span class="p">(</span>frame<span class="p">)</span>
+<div class=" highlight hl-r"><pre>str<span class="p">(</span>claims<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -294,31 +245,29 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<ol class=list-inline>
-	<p>566</p>
-	<p>9</p>
-</ol>
-
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&apos;data.frame&apos;:	458005 obs. of  16 variables:
+ $ age              : int  85 59 67 52 67 68 75 70 67 67 ...
+ $ alzheimers       : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ arthritis        : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ cancer           : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ copd             : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ depression       : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ diabetes         : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ heart.failure    : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ ihd              : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ kidney           : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ osteoporosis     : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ stroke           : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ reimbursement2008: int  0 0 0 0 0 0 0 0 0 0 ...
+ $ bucket2008       : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ reimbursement2009: int  0 0 0 0 0 0 0 0 0 0 ...
+ $ bucket2009       : int  1 1 1 1 1 1 1 1 1 1 ...
+</pre>
+</div>
 </div>
 
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="kn">library</span><span class="p">(</span>dplyr<span class="p">)</span>
-</pre></div>
-
-</div>
 </div>
 </div>
 
@@ -328,40 +277,80 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The five import functions in dplyr:</p>
-<ul>
-<p>Filter: keep rows matching criteria</p>
-<p>select: pick columns by name</p>
-<p>arrange: reorder rows</p>
-<p>mutate: add new variables</p>
-<p>summarize: reduces variables down to a single value</p>
-</ul>
-<h4 id="Structure">Structure<a class="anchor-link" href="#Structure">&#182;</a></h4><ul>
-<p>First argument is a data frame</p>
-<p>Subsequent arguments say waht to do with the data frame</p>
-<p>Always return a data frame</p>
-</ul>
+<p>The classification tree model is build using the data from 2008 and tested using the data from 2009.</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span class="kn">library</span><span class="p">(</span>caTools<span class="p">)</span>
+<span class="kp">set.seed</span><span class="p">(</span><span class="m">88</span><span class="p">)</span>
+spl <span class="o">&lt;-</span> sample.split<span class="p">(</span>claims<span class="o">$</span>bucket2009<span class="p">,</span> SplitRatio <span class="o">=</span> <span class="m">0.6</span><span class="p">)</span>
+claimsTrain <span class="o">&lt;-</span> <span class="kp">subset</span><span class="p">(</span>claims<span class="p">,</span> spl<span class="o">==</span><span class="kc">TRUE</span><span class="p">)</span>
+claimsTest <span class="o">&lt;-</span> <span class="kp">subset</span><span class="p">(</span>claims<span class="p">,</span> spl<span class="o">==</span><span class="kc">FALSE</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span class="kp">table</span><span class="p">(</span>claimsTest<span class="o">$</span>bucket2009<span class="p">,</span> claimsTest<span class="o">$</span>bucket2008<span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[9]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>   
+         1      2      3      4      5
+  1 110138   7787   3427   1452    174
+  2  16000  10721   4629   2931    559
+  3   7006   4629   2774   1621    360
+  4   2688   1943   1415   1539    352
+  5    293    191    160    309    104</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Filter">Filter<a class="anchor-link" href="#Filter">&#182;</a></h3>
+<p>Assuming the cost of claim is the same in 2008 and 2009, the accuracy of the baseline method on the test set is given as follows:</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="c1"># Filter</span>
-filter1 <span class="o">&lt;-</span> filter<span class="p">(</span>frame<span class="p">,</span> Respondent <span class="o">==</span><span class="s">&quot;BUSINESS&quot;</span><span class="p">)</span>
-<span class="kp">head</span><span class="p">(</span>filter1<span class="p">)</span>
+<div class=" highlight hl-r"><pre>Accuracy_baseline <span class="o">&lt;-</span> <span class="kp">diag</span><span class="p">(</span><span class="kp">table</span><span class="p">(</span>claimsTest<span class="o">$</span>bucket2009<span class="p">,</span> claimsTest<span class="o">$</span>bucket2008<span class="p">))</span><span class="o">/</span><span class="kp">sum</span><span class="p">(</span><span class="kp">table</span><span class="p">(</span>claimsTest<span class="o">$</span>bucket2009<span class="p">,</span> claimsTest<span class="o">$</span>bucket2008<span class="p">))</span>
+<span class="kp">round</span><span class="p">(</span><span class="kp">sum</span><span class="p">(</span>Accuracy_baseline<span class="p">),</span> <span class="m">3</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -372,21 +361,10 @@ filter1 <span class="o">&lt;-</span> filter<span class="p">(</span>frame<span cl
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[18]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[12]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Docket</th><th scope=col>Term</th><th scope=col>Circuit</th><th scope=col>Issue</th><th scope=col>Petitioner</th><th scope=col>Respondent</th><th scope=col>LowerCourt</th><th scope=col>Unconst</th><th scope=col>Reverse</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>93-1408</td><td>1994</td><td>2nd</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>2</th><td>93-1577</td><td>1994</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>3</th><td>93-1612</td><td>1994</td><td>5th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>4</th><td>94-623</td><td>1994</td><td>1st</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>5</th><td>94-1175</td><td>1995</td><td>7th</td><td>JudicialPower</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>6</th><td>95-129</td><td>1995</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>1</td><td>0</td></tr>
-</tbody>
-</table>
-
+0.684
 </div>
 
 </div>
@@ -394,15 +372,24 @@ filter1 <span class="o">&lt;-</span> filter<span class="p">(</span>frame<span cl
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The cost of classifying a high-risk patient is always higher than the cost predicting a low-risk patient as a high-risk patient. Let's introduce a penalty matrix to give higher penalties for wrongly predicting a high-risk patient.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="c1"># subset date where Term=1994 or 1997</span>
-filter2 <span class="o">&lt;-</span> filter<span class="p">(</span>frame<span class="p">,</span> Term <span class="o">%in%</span> <span class="kt">c</span><span class="p">(</span><span class="m">1994</span><span class="p">,</span> <span class="m">1997</span><span class="p">))</span>
-<span class="kp">head</span><span class="p">(</span>filter2<span class="p">)</span>
+<div class=" highlight hl-r"><pre>penaltyMatrix <span class="o">&lt;-</span> <span class="kt">matrix</span><span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">8</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">0</span><span class="p">),</span> byrow<span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> nrow<span class="o">=</span><span class="m">5</span><span class="p">)</span>
+penaltyMatrix
 </pre></div>
 
 </div>
@@ -413,113 +400,16 @@ filter2 <span class="o">&lt;-</span> filter<span class="p">(</span>frame<span cl
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[21]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[15]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <table>
-<thead><tr><th></th><th scope=col>Docket</th><th scope=col>Term</th><th scope=col>Circuit</th><th scope=col>Issue</th><th scope=col>Petitioner</th><th scope=col>Respondent</th><th scope=col>LowerCourt</th><th scope=col>Unconst</th><th scope=col>Reverse</th></tr></thead>
 <tbody>
-	<tr><th scope=row>1</th><td>93-1408</td><td>1994</td><td>2nd</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>2</th><td>93-1577</td><td>1994</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>3</th><td>93-1612</td><td>1994</td><td>5th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>4</th><td>94-623</td><td>1994</td><td>1st</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>5</th><td>96-1768</td><td>1997</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>1</td><td>1</td></tr>
-	<tr><th scope=row>6</th><td>96-843</td><td>1997</td><td>DC</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="c1"># subset data with Term 1997 or later</span>
-filter3 <span class="o">&lt;-</span> filter<span class="p">(</span>frame<span class="p">,</span> Term <span class="o">&gt;=</span> <span class="m">1997</span><span class="p">)</span>
-<span class="kp">head</span><span class="p">(</span>filter3<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[23]:</div>
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Docket</th><th scope=col>Term</th><th scope=col>Circuit</th><th scope=col>Issue</th><th scope=col>Petitioner</th><th scope=col>Respondent</th><th scope=col>LowerCourt</th><th scope=col>Unconst</th><th scope=col>Reverse</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>96-1768</td><td>1997</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>1</td><td>1</td></tr>
-	<tr><th scope=row>2</th><td>96-843</td><td>1997</td><td>DC</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>3</th><td>98-1480</td><td>1999</td><td>11th</td><td>CriminalProcedure</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>4</th><td>99-150</td><td>1999</td><td>2nd</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>5</th><td>99-1571</td><td>2000</td><td>6th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>1</td><td>1</td></tr>
-	<tr><th scope=row>6</th><td>99-2035</td><td>2000</td><td>9th</td><td>DueProcess</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>1</td><td>1</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="c1"># Circuit is 9th and LowerCourt is liberal</span>
-filter4 <span class="o">&lt;-</span> filter<span class="p">(</span>frame<span class="p">,</span> Circuit<span class="o">==</span><span class="s">&quot;9th&quot;</span> <span class="o">&amp;</span> LowerCourt<span class="o">==</span><span class="s">&quot;liberal&quot;</span><span class="p">)</span>
-<span class="kp">head</span><span class="p">(</span>filter4<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[24]:</div>
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Docket</th><th scope=col>Term</th><th scope=col>Circuit</th><th scope=col>Issue</th><th scope=col>Petitioner</th><th scope=col>Respondent</th><th scope=col>LowerCourt</th><th scope=col>Unconst</th><th scope=col>Reverse</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>93-1577</td><td>1994</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>2</th><td>99-2035</td><td>2000</td><td>9th</td><td>DueProcess</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>1</td><td>1</td></tr>
-	<tr><th scope=row>3</th><td>95-244</td><td>1995</td><td>9th</td><td>JudicialPower</td><td>GOVERNMENT.OFFICIAL</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>0</td></tr>
-	<tr><th scope=row>4</th><td>00-152</td><td>2000</td><td>9th</td><td>JudicialPower</td><td>GOVERNMENT.OFFICIAL</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>5</th><td>93-1318</td><td>1994</td><td>9th</td><td>FederalTaxation</td><td>OTHER</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>6</th><td>95-83</td><td>1995</td><td>9th</td><td>JudicialPower</td><td>OTHER</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
+	<tr><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+	<tr><td>2</td><td>0</td><td>1</td><td>2</td><td>3</td></tr>
+	<tr><td>4</td><td>2</td><td>0</td><td>1</td><td>2</td></tr>
+	<tr><td>6</td><td>4</td><td>2</td><td>0</td><td>1</td></tr>
+	<tr><td>8</td><td>6</td><td>4</td><td>2</td><td>0</td></tr>
 </tbody>
 </table>
 
@@ -536,23 +426,18 @@ filter4 <span class="o">&lt;-</span> filter<span class="p">(</span>frame<span cl
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Select">Select<a class="anchor-link" href="#Select">&#182;</a></h3><ul>
-<p>starts_with(x, ignore.case = TRUE)</p>
-<p>ends_with(x, ignore.case = TRUE)</p>
-<p>contains(x, ...)</p>
-<p>matches(x, ...)</p>
-</ul>
+<p>The penalty error of the baseline model would be calculated by:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre>select1 <span class="o">&lt;-</span> select<span class="p">(</span>frame<span class="p">,</span> Term<span class="o">:</span>Petitioner<span class="p">)</span>
-<span class="kp">head</span><span class="p">(</span>select1<span class="p">)</span>
+<div class=" highlight hl-r"><pre>ErrorCost_matrix <span class="o">&lt;-</span> <span class="kp">as.matrix</span><span class="p">(</span><span class="kp">table</span><span class="p">(</span>claimsTest<span class="o">$</span>bucket2009<span class="p">,</span> claimsTest<span class="o">$</span>bucket2008<span class="p">))</span><span class="o">*</span>penaltyMatrix
+ErrorCost_matrix
 </pre></div>
 
 </div>
@@ -563,21 +448,46 @@ filter4 <span class="o">&lt;-</span> filter<span class="p">(</span>frame<span cl
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[25]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[19]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>   
+        1     2     3     4     5
+  1     0  7787  6854  4356   696
+  2 32000     0  4629  5862  1677
+  3 28024  9258     0  1621   720
+  4 16128  7772  2830     0   352
+  5  2344  1146   640   618     0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre>PenaltyError_baseline <span class="o">&lt;-</span> <span class="kp">sum</span><span class="p">(</span>ErrorCost_matrix<span class="p">)</span><span class="o">/</span><span class="kp">nrow</span><span class="p">(</span>claimsTest<span class="p">)</span>
+<span class="kp">round</span><span class="p">(</span>PenaltyError_baseline<span class="p">,</span> <span class="m">3</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[26]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Term</th><th scope=col>Circuit</th><th scope=col>Issue</th><th scope=col>Petitioner</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>1994</td><td>2nd</td><td>EconomicActivity</td><td>BUSINESS</td></tr>
-	<tr><th scope=row>2</th><td>1994</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td></tr>
-	<tr><th scope=row>3</th><td>1994</td><td>5th</td><td>EconomicActivity</td><td>BUSINESS</td></tr>
-	<tr><th scope=row>4</th><td>1994</td><td>1st</td><td>EconomicActivity</td><td>BUSINESS</td></tr>
-	<tr><th scope=row>5</th><td>1995</td><td>7th</td><td>JudicialPower</td><td>BUSINESS</td></tr>
-	<tr><th scope=row>6</th><td>1995</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td></tr>
-</tbody>
-</table>
-
+0.739
 </div>
 
 </div>
@@ -585,43 +495,27 @@ filter4 <span class="o">&lt;-</span> filter<span class="p">(</span>frame<span cl
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now, the goal of the classification problem should be to improve the accuracy level from the baseline accuracy of 0.684 and to reduce the penalty error rate from 0.739.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre>select2 <span class="o">&lt;-</span> select<span class="p">(</span>frame<span class="p">,</span> starts_with<span class="p">(</span><span class="s">&quot;r&quot;</span><span class="p">))</span>
-<span class="kp">head</span><span class="p">(</span>select2<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span class="kn">library</span><span class="p">(</span>rpart<span class="p">)</span>
+<span class="c1">#library(rpart.plot)</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[27]:</div>
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Respondent</th><th scope=col>Reverse</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>BUSINESS</td><td>1</td></tr>
-	<tr><th scope=row>2</th><td>BUSINESS</td><td>1</td></tr>
-	<tr><th scope=row>3</th><td>BUSINESS</td><td>1</td></tr>
-	<tr><th scope=row>4</th><td>BUSINESS</td><td>1</td></tr>
-	<tr><th scope=row>5</th><td>BUSINESS</td><td>1</td></tr>
-	<tr><th scope=row>6</th><td>BUSINESS</td><td>0</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -631,9 +525,7 @@ filter4 <span class="o">&lt;-</span> filter<span class="p">(</span>frame<span cl
 <div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="c1"># Get me the table whose variables ends with letter &quot;t&quot;</span>
-select3 <span class="o">&lt;-</span> select<span class="p">(</span>frame<span class="p">,</span> ends_with<span class="p">(</span><span class="s">&quot;t&quot;</span><span class="p">))</span>
-<span class="kp">head</span><span class="p">(</span>select3<span class="p">)</span>
+<div class=" highlight hl-r"><pre>str<span class="p">(</span>claims<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -644,23 +536,27 @@ select3 <span class="o">&lt;-</span> select<span class="p">(</span>frame<span cl
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[28]:</div>
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Docket</th><th scope=col>Circuit</th><th scope=col>Respondent</th><th scope=col>LowerCourt</th><th scope=col>Unconst</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>93-1408</td><td>2nd</td><td>BUSINESS</td><td>liberal</td><td>0</td></tr>
-	<tr><th scope=row>2</th><td>93-1577</td><td>9th</td><td>BUSINESS</td><td>liberal</td><td>0</td></tr>
-	<tr><th scope=row>3</th><td>93-1612</td><td>5th</td><td>BUSINESS</td><td>liberal</td><td>0</td></tr>
-	<tr><th scope=row>4</th><td>94-623</td><td>1st</td><td>BUSINESS</td><td>conser</td><td>0</td></tr>
-	<tr><th scope=row>5</th><td>94-1175</td><td>7th</td><td>BUSINESS</td><td>conser</td><td>0</td></tr>
-	<tr><th scope=row>6</th><td>95-129</td><td>9th</td><td>BUSINESS</td><td>conser</td><td>1</td></tr>
-</tbody>
-</table>
-
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&apos;data.frame&apos;:	458005 obs. of  16 variables:
+ $ age              : int  85 59 67 52 67 68 75 70 67 67 ...
+ $ alzheimers       : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ arthritis        : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ cancer           : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ copd             : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ depression       : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ diabetes         : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ heart.failure    : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ ihd              : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ kidney           : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ osteoporosis     : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ stroke           : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ reimbursement2008: int  0 0 0 0 0 0 0 0 0 0 ...
+ $ bucket2008       : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ reimbursement2009: int  0 0 0 0 0 0 0 0 0 0 ...
+ $ bucket2009       : int  1 1 1 1 1 1 1 1 1 1 ...
+</pre>
 </div>
-
 </div>
 
 </div>
@@ -669,91 +565,15 @@ select3 <span class="o">&lt;-</span> select<span class="p">(</span>frame<span cl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="c1"># Get me the table whose variables contains letter &quot;t&quot;</span>
-select4 <span class="o">&lt;-</span> select<span class="p">(</span>frame<span class="p">,</span> contains<span class="p">(</span><span class="s">&quot;t&quot;</span><span class="p">))</span>
-<span class="kp">head</span><span class="p">(</span>select4<span class="p">)</span>
+<div class=" highlight hl-r"><pre>claimsTree <span class="o">&lt;-</span> rpart<span class="p">(</span>bucket2009<span class="o">~</span><span class="m">.</span> <span class="o">-</span>reimbursement2009<span class="p">,</span> data<span class="o">=</span>claimsTrain<span class="p">,</span> method <span class="o">=</span> <span class="s">&quot;class&quot;</span><span class="p">,</span> 
+                    cp<span class="o">=</span><span class="m">0.00005</span><span class="p">,</span> parms<span class="o">=</span><span class="kt">list</span><span class="p">(</span>loss<span class="o">=</span>penaltyMatrix<span class="p">))</span>
+<span class="c1">#prp(claimsTree)</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[29]:</div>
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Docket</th><th scope=col>Term</th><th scope=col>Circuit</th><th scope=col>Petitioner</th><th scope=col>Respondent</th><th scope=col>LowerCourt</th><th scope=col>Unconst</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>93-1408</td><td>1994</td><td>2nd</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td></tr>
-	<tr><th scope=row>2</th><td>93-1577</td><td>1994</td><td>9th</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td></tr>
-	<tr><th scope=row>3</th><td>93-1612</td><td>1994</td><td>5th</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td></tr>
-	<tr><th scope=row>4</th><td>94-623</td><td>1994</td><td>1st</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td></tr>
-	<tr><th scope=row>5</th><td>94-1175</td><td>1995</td><td>7th</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td></tr>
-	<tr><th scope=row>6</th><td>95-129</td><td>1995</td><td>9th</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>1</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Arrange">Arrange<a class="anchor-link" href="#Arrange">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="c1"># Arrange the table in (alphabetically) descending order by Issue</span>
-arrange1 <span class="o">&lt;-</span> arrange<span class="p">(</span>frame<span class="p">,</span> Issue<span class="p">)</span>
-<span class="kp">head</span><span class="p">(</span>arrange1<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[31]:</div>
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Docket</th><th scope=col>Term</th><th scope=col>Circuit</th><th scope=col>Issue</th><th scope=col>Petitioner</th><th scope=col>Respondent</th><th scope=col>LowerCourt</th><th scope=col>Unconst</th><th scope=col>Reverse</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>94-226</td><td>1994</td><td>11th</td><td>Attorneys</td><td>BUSINESS</td><td>OTHER</td><td>liberal</td><td>0</td><td>0</td></tr>
-	<tr><th scope=row>2</th><td>99-1848</td><td>2000</td><td>4th</td><td>Attorneys</td><td>BUSINESS</td><td>OTHER</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>3</th><td>99-502</td><td>1999</td><td>6th</td><td>Attorneys</td><td>OTHER</td><td>OTHER</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>4</th><td>97-1943</td><td>1998</td><td>10th</td><td>CivilRights</td><td>EMPLOYEE</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>5</th><td>00-1853</td><td>2001</td><td>2nd</td><td>CivilRights</td><td>EMPLOYEE</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>6</th><td>95-1872</td><td>1996</td><td>8th</td><td>CivilRights</td><td>AMERICAN.INDIAN</td><td>BUSINESS</td><td>conser</td><td>0</td><td>0</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -763,9 +583,8 @@ arrange1 <span class="o">&lt;-</span> arrange<span class="p">(</span>frame<span 
 <div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="c1"># order the data by Term, descending order</span>
-arrange2 <span class="o">&lt;-</span> arrange<span class="p">(</span>frame<span class="p">,</span> desc<span class="p">(</span>Term<span class="p">))</span>
-<span class="kp">head</span><span class="p">(</span>arrange2<span class="p">)</span>
+<div class=" highlight hl-r"><pre>predictTest <span class="o">&lt;-</span> predict<span class="p">(</span>claimsTree<span class="p">,</span> newdata<span class="o">=</span>claimsTest<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;class&quot;</span><span class="p">)</span>
+<span class="kp">table</span><span class="p">(</span>claimsTest<span class="o">$</span>bucket2009<span class="p">,</span> predictTest<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -778,19 +597,15 @@ arrange2 <span class="o">&lt;-</span> arrange<span class="p">(</span>frame<span 
 
 <div class="output_area"><div class="prompt output_prompt">Out[37]:</div>
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Docket</th><th scope=col>Term</th><th scope=col>Circuit</th><th scope=col>Issue</th><th scope=col>Petitioner</th><th scope=col>Respondent</th><th scope=col>LowerCourt</th><th scope=col>Unconst</th><th scope=col>Reverse</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>00-1853</td><td>2001</td><td>2nd</td><td>CivilRights</td><td>EMPLOYEE</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>2</th><td>00-1307</td><td>2001</td><td>4th</td><td>CivilRights</td><td>OTHER</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>3</th><td>00-927</td><td>2001</td><td>5th</td><td>Unions</td><td>OTHER</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>4</th><td>00-1249</td><td>2001</td><td>7th</td><td>FirstAmendment</td><td>BUSINESS</td><td>CITY</td><td>conser</td><td>1</td><td>0</td></tr>
-	<tr><th scope=row>5</th><td>00-860</td><td>2001</td><td>2nd</td><td>JudicialPower</td><td>BUSINESS</td><td>CRIMINAL.DEFENDENT</td><td>liberal</td><td>0</td><td>0</td></tr>
-	<tr><th scope=row>6</th><td>00-853</td><td>2001</td><td>2nd</td><td>DueProcess</td><td>OTHER</td><td>CRIMINAL.DEFENDENT</td><td>liberal</td><td>0</td><td>1</td></tr>
-</tbody>
-</table>
 
+<div class="output_text output_subarea output_execute_result">
+<pre>   predictTest
+        1     2     3     4     5
+  1 94310 25295  3087   286     0
+  2  7176 18942  8079   643     0
+  3  3590  7706  4692   401     1
+  4  1304  3193  2803   636     1
+  5   135   356   408   156     2</pre>
 </div>
 
 </div>
@@ -804,9 +619,8 @@ arrange2 <span class="o">&lt;-</span> arrange<span class="p">(</span>frame<span 
 <div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="c1"># order the data by Term, ascending order</span>
-arrange3 <span class="o">&lt;-</span> arrange<span class="p">(</span>frame<span class="p">,</span> Term<span class="p">)</span>
-<span class="kp">head</span><span class="p">(</span>arrange3<span class="p">)</span>
+<div class=" highlight hl-r"><pre>AccuracyTest <span class="o">&lt;-</span> <span class="kp">diag</span><span class="p">(</span><span class="kp">table</span><span class="p">(</span>claimsTest<span class="o">$</span>bucket2009<span class="p">,</span> predictTest<span class="p">))</span><span class="o">/</span><span class="kp">sum</span><span class="p">(</span><span class="kp">table</span><span class="p">(</span>claimsTest<span class="o">$</span>bucket2009<span class="p">,</span> predictTest<span class="p">))</span>
+<span class="kp">round</span><span class="p">(</span><span class="kp">sum</span><span class="p">(</span>AccuracyTest<span class="p">),</span><span class="m">3</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -820,18 +634,37 @@ arrange3 <span class="o">&lt;-</span> arrange<span class="p">(</span>frame<span 
 <div class="output_area"><div class="prompt output_prompt">Out[38]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Docket</th><th scope=col>Term</th><th scope=col>Circuit</th><th scope=col>Issue</th><th scope=col>Petitioner</th><th scope=col>Respondent</th><th scope=col>LowerCourt</th><th scope=col>Unconst</th><th scope=col>Reverse</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>93-1408</td><td>1994</td><td>2nd</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>2</th><td>93-1577</td><td>1994</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>3</th><td>93-1612</td><td>1994</td><td>5th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>4</th><td>94-623</td><td>1994</td><td>1st</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>5</th><td>94-788</td><td>1994</td><td>7th</td><td>EconomicActivity</td><td>CITY</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>0</td></tr>
-	<tr><th scope=row>6</th><td>93-1251</td><td>1994</td><td>6th</td><td>JudicialPower</td><td>OTHER</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-</tbody>
-</table>
+0.647
+</div>
 
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span class="c1"># penalty error of the model</span>
+ErrorCost_rate <span class="o">&lt;-</span> <span class="kp">sum</span><span class="p">(</span><span class="kp">as.matrix</span><span class="p">(</span><span class="kp">table</span><span class="p">(</span>claimsTest<span class="o">$</span>bucket2009<span class="p">,</span> predictTest<span class="p">))</span><span class="o">*</span>penaltyMatrix<span class="p">)</span><span class="o">/</span><span class="kp">nrow</span><span class="p">(</span>claimsTest<span class="p">)</span>
+<span class="kp">round</span><span class="p">(</span>ErrorCost_rate<span class="p">,</span><span class="m">3</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[39]:</div>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+0.642
 </div>
 
 </div>
@@ -845,178 +678,17 @@ arrange3 <span class="o">&lt;-</span> arrange<span class="p">(</span>frame<span 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Mutate">Mutate<a class="anchor-link" href="#Mutate">&#182;</a></h3><p>Variable transformation</p>
+<p>The accuracy of the model is lower, but it has a lower error rate of predicting the high-risk patients.</p>
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[53]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="c1"># Add additional variable called &#39;Reverse10&#39; from Reverse</span>
-frame1 <span class="o">&lt;-</span> mutate<span class="p">(</span>frame<span class="p">,</span> Reverse10 <span class="o">=</span> <span class="kp">round</span><span class="p">(</span>Reverse<span class="o">*</span>runif<span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="o">*</span><span class="m">100</span><span class="p">,</span> <span class="m">0</span><span class="p">))</span>
-<span class="kp">head</span><span class="p">(</span>frame1<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>Warning message:
-In c(1L, 1L, 1L, 1L, 1L, 0L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 0L, 0L, : longer object length is not a multiple of shorter object length</pre>
-</div>
-</div>
-
-<div class="output_area"><div class="prompt output_prompt">Out[53]:</div>
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Docket</th><th scope=col>Term</th><th scope=col>Circuit</th><th scope=col>Issue</th><th scope=col>Petitioner</th><th scope=col>Respondent</th><th scope=col>LowerCourt</th><th scope=col>Unconst</th><th scope=col>Reverse</th><th scope=col>Reverse10</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>93-1408</td><td>1994</td><td>2nd</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td><td>64</td></tr>
-	<tr><th scope=row>2</th><td>93-1577</td><td>1994</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td><td>39</td></tr>
-	<tr><th scope=row>3</th><td>93-1612</td><td>1994</td><td>5th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td><td>82</td></tr>
-	<tr><th scope=row>4</th><td>94-623</td><td>1994</td><td>1st</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td><td>75</td></tr>
-	<tr><th scope=row>5</th><td>94-1175</td><td>1995</td><td>7th</td><td>JudicialPower</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td><td>36</td></tr>
-	<tr><th scope=row>6</th><td>95-129</td><td>1995</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>1</td><td>0</td><td>0</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Group_by-and-Summarise">Group_by and Summarise<a class="anchor-link" href="#Group_by-and-Summarise">&#182;</a></h3><p>Summary functions:</p>
-<ul>
-<p>min(x0, median(x), mean(), max(x), sum(x), quantile(x, p), n(), n_distinct(x), sd(x), var(x), IQR(x), mad(x)</p>
-<p>sum(x &gt; 10), mean(x &gt; 10)</p>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[55]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="c1"># Group the data by Term and get sum of Reverse10 for each Term</span>
-by_Term <span class="o">&lt;-</span> group_by<span class="p">(</span>frame1<span class="p">,</span> Term<span class="p">)</span>
-summary1 <span class="o">&lt;-</span> summarise<span class="p">(</span>by_Term<span class="p">,</span> total <span class="o">=</span> <span class="kp">sum</span><span class="p">(</span>Reverse10<span class="p">))</span>
-<span class="kp">head</span><span class="p">(</span>summary1<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[55]:</div>
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Term</th><th scope=col>total</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>1994</td><td>2370</td></tr>
-	<tr><th scope=row>2</th><td>1995</td><td>2218</td></tr>
-	<tr><th scope=row>3</th><td>1996</td><td>2191</td></tr>
-	<tr><th scope=row>4</th><td>1997</td><td>2660</td></tr>
-	<tr><th scope=row>5</th><td>1998</td><td>1939</td></tr>
-	<tr><th scope=row>6</th><td>1999</td><td>2119</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[56]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre>summary2 <span class="o">&lt;-</span> summarise<span class="p">(</span>filter<span class="p">(</span>by_Term<span class="p">,</span> <span class="o">!</span><span class="kp">is.na</span><span class="p">(</span>Reverse10<span class="p">)),</span>
-                     med <span class="o">=</span> median<span class="p">(</span>Reverse10<span class="p">),</span>
-                     mean <span class="o">=</span> <span class="kp">mean</span><span class="p">(</span>Reverse10<span class="p">),</span>
-                     max <span class="o">=</span> <span class="kp">max</span><span class="p">(</span>Reverse10<span class="p">),</span> 
-                     Q90 <span class="o">=</span> quantile<span class="p">(</span>Reverse10<span class="p">,</span> <span class="m">0.9</span><span class="p">))</span>
-<span class="kp">head</span><span class="p">(</span>summary2<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[56]:</div>
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Term</th><th scope=col>med</th><th scope=col>mean</th><th scope=col>max</th><th scope=col>Q90</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>1994</td><td>7.5</td><td>29.625</td><td>93</td><td>75.2</td></tr>
-	<tr><th scope=row>2</th><td>1995</td><td>14.5</td><td>30.80556</td><td>93</td><td>75</td></tr>
-	<tr><th scope=row>3</th><td>1996</td><td>11</td><td>27.04938</td><td>93</td><td>75</td></tr>
-	<tr><th scope=row>4</th><td>1997</td><td>36</td><td>30.93023</td><td>93</td><td>76</td></tr>
-	<tr><th scope=row>5</th><td>1998</td><td>7.5</td><td>25.51316</td><td>93</td><td>72</td></tr>
-	<tr><th scope=row>6</th><td>1999</td><td>11</td><td>29.84507</td><td>93</td><td>82</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre>
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div>
     </div>
   </div>
   
-	<footer>
-	  <p style ="text-align:left">&copy; 2015 Desta Hailemariam </p>
+  <footer>
+	  <p style ="text-align:center">&copy; 2015 Desta Hailemariam </p>
 	</footer>
-	
-  </body>
+  
+</body>
 </html>

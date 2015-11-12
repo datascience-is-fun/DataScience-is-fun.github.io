@@ -33,21 +33,13 @@
 	<nav>
 	  <ul>
 	    <li><a href="http://datascience-is-fun.com/">Home</a></li>
-	    <li><a href="http://datascience-is-fun.com/Profile/index.html">Profile</a></li>
-	    <li><a href="http://datascience-is-fun.com/R_models/index.html">Modeling with R</a></li>
-	    <li><a href="http://datascience-is-fun.com/Python_models/index.html">Modeling with Python</a></li>
+	    <li><a href="http://datascience-is-fun.com/Profile.html">Profile</a></li>
+	    <li><a href="http://datascience-is-fun.com/R/index.html">Modeling with R</a></li>
+	    <li><a href="http://datascience-is-fun.com/Python/index.html">Modeling with Python</a></li>
 	  </ul> 
 	</nav>
 	
-	
-	
-	
-	
-
-
-
-
-<title>dplyr Package Tutorial</title>
+<title>Classification Tree</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -220,18 +212,26 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="dplyr-package">dplyr package<a class="anchor-link" href="#dplyr-package">&#182;</a></h3>
-<br/>
-<p> The dplyr package is among the most important packages that make data analysis easier. This subsection use the dplyr package to analysis data.</p>
+<h3 id="Classification-Tree-for-Court-Decision">Classification Tree for Court Decision<a class="anchor-link" href="#Classification-Tree-for-Court-Decision">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Classification trees have advantage over logistic regression models in that they are easy to interpret.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre>frame <span class="o">&lt;-</span> read.csv<span class="p">(</span><span class="s">&quot;stevens.csv&quot;</span><span class="p">,</span> stringsAsFactors<span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre>frame1 <span class="o">&lt;-</span> read.csv<span class="p">(</span><span class="s">&quot;Stevens.csv&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -241,49 +241,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="kp">head</span><span class="p">(</span>frame<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Docket</th><th scope=col>Term</th><th scope=col>Circuit</th><th scope=col>Issue</th><th scope=col>Petitioner</th><th scope=col>Respondent</th><th scope=col>LowerCourt</th><th scope=col>Unconst</th><th scope=col>Reverse</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>93-1408</td><td>1994</td><td>2nd</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>2</th><td>93-1577</td><td>1994</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>3</th><td>93-1612</td><td>1994</td><td>5th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>4</th><td>94-623</td><td>1994</td><td>1st</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>5</th><td>94-1175</td><td>1995</td><td>7th</td><td>JudicialPower</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>6</th><td>95-129</td><td>1995</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>1</td><td>0</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="kp">dim</span><span class="p">(</span>frame<span class="p">)</span>
+<div class=" highlight hl-r"><pre>str<span class="p">(</span>frame1<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -294,139 +255,81 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&apos;data.frame&apos;:	566 obs. of  9 variables:
+ $ Docket    : Factor w/ 566 levels &quot;00-1011&quot;,&quot;00-1045&quot;,..: 63 69 70 145 97 181 242 289 334 436 ...
+ $ Term      : int  1994 1994 1994 1994 1995 1995 1996 1997 1997 1999 ...
+ $ Circuit   : Factor w/ 13 levels &quot;10th&quot;,&quot;11th&quot;,..: 4 11 7 3 9 11 13 11 12 2 ...
+ $ Issue     : Factor w/ 11 levels &quot;Attorneys&quot;,&quot;CivilRights&quot;,..: 5 5 5 5 9 5 5 5 5 3 ...
+ $ Petitioner: Factor w/ 12 levels &quot;AMERICAN.INDIAN&quot;,..: 2 2 2 2 2 2 2 2 2 2 ...
+ $ Respondent: Factor w/ 12 levels &quot;AMERICAN.INDIAN&quot;,..: 2 2 2 2 2 2 2 2 2 2 ...
+ $ LowerCourt: Factor w/ 2 levels &quot;conser&quot;,&quot;liberal&quot;: 2 2 2 1 1 1 1 1 1 1 ...
+ $ Unconst   : int  0 0 0 0 0 1 0 1 0 0 ...
+ $ Reverse   : int  1 1 1 1 1 0 1 1 1 1 ...
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span class="kn">library</span><span class="p">(</span>caTools<span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>caret<span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>e1071<span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span class="kp">set.seed</span><span class="p">(</span><span class="m">3000</span><span class="p">)</span>
+spl <span class="o">&lt;-</span> sample.split<span class="p">(</span>frame1<span class="o">$</span>Reverse<span class="p">,</span> SplitRatio<span class="o">=</span><span class="m">0.7</span><span class="p">)</span>
+train <span class="o">&lt;-</span> <span class="kp">subset</span><span class="p">(</span>frame1<span class="p">,</span> spl <span class="o">==</span> <span class="kc">TRUE</span><span class="p">)</span>
+test <span class="o">&lt;-</span> <span class="kp">subset</span><span class="p">(</span>frame1<span class="p">,</span> spl <span class="o">==</span> <span class="kc">FALSE</span><span class="p">)</span>
+<span class="kp">dim</span><span class="p">(</span>train<span class="p">)</span>
+<span class="kp">dim</span><span class="p">(</span>test<span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[23]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <ol class=list-inline>
-	<p>566</p>
-	<p>9</p>
+	<li>396</li>
+	<li>9</li>
 </ol>
 
 </div>
 
 </div>
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="kn">library</span><span class="p">(</span>dplyr<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The five import functions in dplyr:</p>
-<ul>
-<p>Filter: keep rows matching criteria</p>
-<p>select: pick columns by name</p>
-<p>arrange: reorder rows</p>
-<p>mutate: add new variables</p>
-<p>summarize: reduces variables down to a single value</p>
-</ul>
-<h4 id="Structure">Structure<a class="anchor-link" href="#Structure">&#182;</a></h4><ul>
-<p>First argument is a data frame</p>
-<p>Subsequent arguments say waht to do with the data frame</p>
-<p>Always return a data frame</p>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Filter">Filter<a class="anchor-link" href="#Filter">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="c1"># Filter</span>
-filter1 <span class="o">&lt;-</span> filter<span class="p">(</span>frame<span class="p">,</span> Respondent <span class="o">==</span><span class="s">&quot;BUSINESS&quot;</span><span class="p">)</span>
-<span class="kp">head</span><span class="p">(</span>filter1<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[18]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[23]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Docket</th><th scope=col>Term</th><th scope=col>Circuit</th><th scope=col>Issue</th><th scope=col>Petitioner</th><th scope=col>Respondent</th><th scope=col>LowerCourt</th><th scope=col>Unconst</th><th scope=col>Reverse</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>93-1408</td><td>1994</td><td>2nd</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>2</th><td>93-1577</td><td>1994</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>3</th><td>93-1612</td><td>1994</td><td>5th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>4</th><td>94-623</td><td>1994</td><td>1st</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>5</th><td>94-1175</td><td>1995</td><td>7th</td><td>JudicialPower</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>6</th><td>95-129</td><td>1995</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>1</td><td>0</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="c1"># subset date where Term=1994 or 1997</span>
-filter2 <span class="o">&lt;-</span> filter<span class="p">(</span>frame<span class="p">,</span> Term <span class="o">%in%</span> <span class="kt">c</span><span class="p">(</span><span class="m">1994</span><span class="p">,</span> <span class="m">1997</span><span class="p">))</span>
-<span class="kp">head</span><span class="p">(</span>filter2<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[21]:</div>
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Docket</th><th scope=col>Term</th><th scope=col>Circuit</th><th scope=col>Issue</th><th scope=col>Petitioner</th><th scope=col>Respondent</th><th scope=col>LowerCourt</th><th scope=col>Unconst</th><th scope=col>Reverse</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>93-1408</td><td>1994</td><td>2nd</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>2</th><td>93-1577</td><td>1994</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>3</th><td>93-1612</td><td>1994</td><td>5th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>4</th><td>94-623</td><td>1994</td><td>1st</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>5</th><td>96-1768</td><td>1997</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>1</td><td>1</td></tr>
-	<tr><th scope=row>6</th><td>96-843</td><td>1997</td><td>DC</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-</tbody>
-</table>
+<ol class=list-inline>
+	<li>170</li>
+	<li>9</li>
+</ol>
 
 </div>
 
@@ -451,12 +354,12 @@ filter2 <span class="o">&lt;-</span> filter<span class="p">(</span>frame<span cl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="c1"># subset data with Term 1997 or later</span>
-filter3 <span class="o">&lt;-</span> filter<span class="p">(</span>frame<span class="p">,</span> Term <span class="o">&gt;=</span> <span class="m">1997</span><span class="p">)</span>
-<span class="kp">head</span><span class="p">(</span>filter3<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span class="kn">library</span><span class="p">(</span>rpart<span class="p">)</span>
+install.packages<span class="p">(</span><span class="s">&quot;rpart.plot&quot;</span><span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>rpart.plot<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -467,23 +370,70 @@ filter3 <span class="o">&lt;-</span> filter<span class="p">(</span>frame<span cl
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[23]:</div>
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Docket</th><th scope=col>Term</th><th scope=col>Circuit</th><th scope=col>Issue</th><th scope=col>Petitioner</th><th scope=col>Respondent</th><th scope=col>LowerCourt</th><th scope=col>Unconst</th><th scope=col>Reverse</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>96-1768</td><td>1997</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>1</td><td>1</td></tr>
-	<tr><th scope=row>2</th><td>96-843</td><td>1997</td><td>DC</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>3</th><td>98-1480</td><td>1999</td><td>11th</td><td>CriminalProcedure</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>4</th><td>99-150</td><td>1999</td><td>2nd</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>5</th><td>99-1571</td><td>2000</td><td>6th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>1</td><td>1</td></tr>
-	<tr><th scope=row>6</th><td>99-2035</td><td>2000</td><td>9th</td><td>DueProcess</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>1</td><td>1</td></tr>
-</tbody>
-</table>
-
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>Installing package into &apos;C:/Users/Desta/Documents/R/win-library/3.1&apos;
+(as &apos;lib&apos; is unspecified)
+</pre>
+</div>
 </div>
 
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_text output_error">
+<pre>
+Error in contrib.url(repos, &quot;source&quot;): trying to use CRAN without setting a mirror
+</pre>
+</div>
+</div>
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_text output_error">
+<pre>
+Error in library(rpart.plot): there is no package called &apos;rpart.plot&apos;
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre>tree_Model <span class="o">&lt;-</span> rpart<span class="p">(</span>Reverse <span class="o">~</span> Circuit <span class="o">+</span> Issue <span class="o">+</span> Petitioner <span class="o">+</span> Respondent <span class="o">+</span> LowerCourt <span class="o">+</span> Unconst<span class="p">,</span> data <span class="o">=</span> train<span class="p">,</span> 
+                    method <span class="o">=</span> <span class="s">&quot;class&quot;</span><span class="p">,</span> minbucket <span class="o">=</span> <span class="m">25</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre>prp<span class="p">(</span>tree_Model<span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_text output_error">
+<pre>
+Error in eval(expr, envir, enclos): could not find function &quot;prp&quot;
+</pre>
+</div>
 </div>
 
 </div>
@@ -495,64 +445,21 @@ filter3 <span class="o">&lt;-</span> filter<span class="p">(</span>frame<span cl
 <div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="c1"># Circuit is 9th and LowerCourt is liberal</span>
-filter4 <span class="o">&lt;-</span> filter<span class="p">(</span>frame<span class="p">,</span> Circuit<span class="o">==</span><span class="s">&quot;9th&quot;</span> <span class="o">&amp;</span> LowerCourt<span class="o">==</span><span class="s">&quot;liberal&quot;</span><span class="p">)</span>
-<span class="kp">head</span><span class="p">(</span>filter4<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span class="c1"># Prediction on the test dataset</span>
+CART_Prediction <span class="o">&lt;-</span> predict<span class="p">(</span>tree_Model<span class="p">,</span> newdata <span class="o">=</span> test<span class="p">,</span> type <span class="o">=</span> <span class="s">&quot;class&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[24]:</div>
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Docket</th><th scope=col>Term</th><th scope=col>Circuit</th><th scope=col>Issue</th><th scope=col>Petitioner</th><th scope=col>Respondent</th><th scope=col>LowerCourt</th><th scope=col>Unconst</th><th scope=col>Reverse</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>93-1577</td><td>1994</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>2</th><td>99-2035</td><td>2000</td><td>9th</td><td>DueProcess</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>1</td><td>1</td></tr>
-	<tr><th scope=row>3</th><td>95-244</td><td>1995</td><td>9th</td><td>JudicialPower</td><td>GOVERNMENT.OFFICIAL</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>0</td></tr>
-	<tr><th scope=row>4</th><td>00-152</td><td>2000</td><td>9th</td><td>JudicialPower</td><td>GOVERNMENT.OFFICIAL</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>5</th><td>93-1318</td><td>1994</td><td>9th</td><td>FederalTaxation</td><td>OTHER</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>6</th><td>95-83</td><td>1995</td><td>9th</td><td>JudicialPower</td><td>OTHER</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Select">Select<a class="anchor-link" href="#Select">&#182;</a></h3><ul>
-<p>starts_with(x, ignore.case = TRUE)</p>
-<p>ends_with(x, ignore.case = TRUE)</p>
-<p>contains(x, ...)</p>
-<p>matches(x, ...)</p>
-</ul>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre>select1 <span class="o">&lt;-</span> select<span class="p">(</span>frame<span class="p">,</span> Term<span class="o">:</span>Petitioner<span class="p">)</span>
-<span class="kp">head</span><span class="p">(</span>select1<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span class="kp">table</span><span class="p">(</span>test<span class="o">$</span>Reverse<span class="p">,</span> CART_Prediction<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -565,19 +472,12 @@ filter4 <span class="o">&lt;-</span> filter<span class="p">(</span>frame<span cl
 
 <div class="output_area"><div class="prompt output_prompt">Out[25]:</div>
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Term</th><th scope=col>Circuit</th><th scope=col>Issue</th><th scope=col>Petitioner</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>1994</td><td>2nd</td><td>EconomicActivity</td><td>BUSINESS</td></tr>
-	<tr><th scope=row>2</th><td>1994</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td></tr>
-	<tr><th scope=row>3</th><td>1994</td><td>5th</td><td>EconomicActivity</td><td>BUSINESS</td></tr>
-	<tr><th scope=row>4</th><td>1994</td><td>1st</td><td>EconomicActivity</td><td>BUSINESS</td></tr>
-	<tr><th scope=row>5</th><td>1995</td><td>7th</td><td>JudicialPower</td><td>BUSINESS</td></tr>
-	<tr><th scope=row>6</th><td>1995</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td></tr>
-</tbody>
-</table>
 
+<div class="output_text output_subarea output_execute_result">
+<pre>   CART_Prediction
+     0  1
+  0 41 36
+  1 22 71</pre>
 </div>
 
 </div>
@@ -588,11 +488,11 @@ filter4 <span class="o">&lt;-</span> filter<span class="p">(</span>frame<span cl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre>select2 <span class="o">&lt;-</span> select<span class="p">(</span>frame<span class="p">,</span> starts_with<span class="p">(</span><span class="s">&quot;r&quot;</span><span class="p">))</span>
-<span class="kp">head</span><span class="p">(</span>select2<span class="p">)</span>
+<div class=" highlight hl-r"><pre>Accuracy <span class="o">&lt;-</span> <span class="p">(</span><span class="m">41+71</span><span class="p">)</span><span class="o">/</span><span class="kp">sum</span><span class="p">(</span><span class="kp">table</span><span class="p">(</span>test<span class="o">$</span>Reverse<span class="p">,</span> CART_Prediction<span class="p">))</span>
+<span class="kp">round</span><span class="p">(</span>Accuracy<span class="p">,</span><span class="m">3</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -603,21 +503,10 @@ filter4 <span class="o">&lt;-</span> filter<span class="p">(</span>frame<span cl
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[27]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[30]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Respondent</th><th scope=col>Reverse</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>BUSINESS</td><td>1</td></tr>
-	<tr><th scope=row>2</th><td>BUSINESS</td><td>1</td></tr>
-	<tr><th scope=row>3</th><td>BUSINESS</td><td>1</td></tr>
-	<tr><th scope=row>4</th><td>BUSINESS</td><td>1</td></tr>
-	<tr><th scope=row>5</th><td>BUSINESS</td><td>1</td></tr>
-	<tr><th scope=row>6</th><td>BUSINESS</td><td>0</td></tr>
-</tbody>
-</table>
-
+0.659
 </div>
 
 </div>
@@ -628,53 +517,27 @@ filter4 <span class="o">&lt;-</span> filter<span class="p">(</span>frame<span cl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="c1"># Get me the table whose variables ends with letter &quot;t&quot;</span>
-select3 <span class="o">&lt;-</span> select<span class="p">(</span>frame<span class="p">,</span> ends_with<span class="p">(</span><span class="s">&quot;t&quot;</span><span class="p">))</span>
-<span class="kp">head</span><span class="p">(</span>select3<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span class="c1"># Plot the ROC curve</span>
+<span class="kn">library</span><span class="p">(</span>ROCR<span class="p">)</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[28]:</div>
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Docket</th><th scope=col>Circuit</th><th scope=col>Respondent</th><th scope=col>LowerCourt</th><th scope=col>Unconst</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>93-1408</td><td>2nd</td><td>BUSINESS</td><td>liberal</td><td>0</td></tr>
-	<tr><th scope=row>2</th><td>93-1577</td><td>9th</td><td>BUSINESS</td><td>liberal</td><td>0</td></tr>
-	<tr><th scope=row>3</th><td>93-1612</td><td>5th</td><td>BUSINESS</td><td>liberal</td><td>0</td></tr>
-	<tr><th scope=row>4</th><td>94-623</td><td>1st</td><td>BUSINESS</td><td>conser</td><td>0</td></tr>
-	<tr><th scope=row>5</th><td>94-1175</td><td>7th</td><td>BUSINESS</td><td>conser</td><td>0</td></tr>
-	<tr><th scope=row>6</th><td>95-129</td><td>9th</td><td>BUSINESS</td><td>conser</td><td>1</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-
 </div>
 </div>
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="c1"># Get me the table whose variables contains letter &quot;t&quot;</span>
-select4 <span class="o">&lt;-</span> select<span class="p">(</span>frame<span class="p">,</span> contains<span class="p">(</span><span class="s">&quot;t&quot;</span><span class="p">))</span>
-<span class="kp">head</span><span class="p">(</span>select4<span class="p">)</span>
+<div class=" highlight hl-r"><pre>Prediction_ROC <span class="o">&lt;-</span> predict<span class="p">(</span>tree_Model<span class="p">,</span> newdata <span class="o">=</span> test<span class="p">)</span>
+pred <span class="o">&lt;-</span> prediction<span class="p">(</span>Prediction_ROC<span class="p">[,</span><span class="m">2</span><span class="p">],</span> test<span class="o">$</span>Reverse<span class="p">)</span>
+perf <span class="o">&lt;-</span> performance<span class="p">(</span>pred<span class="p">,</span> <span class="s">&quot;tpr&quot;</span><span class="p">,</span> <span class="s">&quot;fpr&quot;</span><span class="p">)</span>
+plot<span class="p">(</span>perf<span class="p">,</span> colorize <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -685,112 +548,12 @@ select4 <span class="o">&lt;-</span> select<span class="p">(</span>frame<span cl
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[29]:</div>
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Docket</th><th scope=col>Term</th><th scope=col>Circuit</th><th scope=col>Petitioner</th><th scope=col>Respondent</th><th scope=col>LowerCourt</th><th scope=col>Unconst</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>93-1408</td><td>1994</td><td>2nd</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td></tr>
-	<tr><th scope=row>2</th><td>93-1577</td><td>1994</td><td>9th</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td></tr>
-	<tr><th scope=row>3</th><td>93-1612</td><td>1994</td><td>5th</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td></tr>
-	<tr><th scope=row>4</th><td>94-623</td><td>1994</td><td>1st</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td></tr>
-	<tr><th scope=row>5</th><td>94-1175</td><td>1995</td><td>7th</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td></tr>
-	<tr><th scope=row>6</th><td>95-129</td><td>1995</td><td>9th</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>1</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Arrange">Arrange<a class="anchor-link" href="#Arrange">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="c1"># Arrange the table in (alphabetically) descending order by Issue</span>
-arrange1 <span class="o">&lt;-</span> arrange<span class="p">(</span>frame<span class="p">,</span> Issue<span class="p">)</span>
-<span class="kp">head</span><span class="p">(</span>arrange1<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
+<div class="output_area"><div class="prompt"></div>
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[31]:</div>
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Docket</th><th scope=col>Term</th><th scope=col>Circuit</th><th scope=col>Issue</th><th scope=col>Petitioner</th><th scope=col>Respondent</th><th scope=col>LowerCourt</th><th scope=col>Unconst</th><th scope=col>Reverse</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>94-226</td><td>1994</td><td>11th</td><td>Attorneys</td><td>BUSINESS</td><td>OTHER</td><td>liberal</td><td>0</td><td>0</td></tr>
-	<tr><th scope=row>2</th><td>99-1848</td><td>2000</td><td>4th</td><td>Attorneys</td><td>BUSINESS</td><td>OTHER</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>3</th><td>99-502</td><td>1999</td><td>6th</td><td>Attorneys</td><td>OTHER</td><td>OTHER</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>4</th><td>97-1943</td><td>1998</td><td>10th</td><td>CivilRights</td><td>EMPLOYEE</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>5</th><td>00-1853</td><td>2001</td><td>2nd</td><td>CivilRights</td><td>EMPLOYEE</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>6</th><td>95-1872</td><td>1996</td><td>8th</td><td>CivilRights</td><td>AMERICAN.INDIAN</td><td>BUSINESS</td><td>conser</td><td>0</td><td>0</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="c1"># order the data by Term, descending order</span>
-arrange2 <span class="o">&lt;-</span> arrange<span class="p">(</span>frame<span class="p">,</span> desc<span class="p">(</span>Term<span class="p">))</span>
-<span class="kp">head</span><span class="p">(</span>arrange2<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[37]:</div>
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Docket</th><th scope=col>Term</th><th scope=col>Circuit</th><th scope=col>Issue</th><th scope=col>Petitioner</th><th scope=col>Respondent</th><th scope=col>LowerCourt</th><th scope=col>Unconst</th><th scope=col>Reverse</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>00-1853</td><td>2001</td><td>2nd</td><td>CivilRights</td><td>EMPLOYEE</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>2</th><td>00-1307</td><td>2001</td><td>4th</td><td>CivilRights</td><td>OTHER</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>3</th><td>00-927</td><td>2001</td><td>5th</td><td>Unions</td><td>OTHER</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>4</th><td>00-1249</td><td>2001</td><td>7th</td><td>FirstAmendment</td><td>BUSINESS</td><td>CITY</td><td>conser</td><td>1</td><td>0</td></tr>
-	<tr><th scope=row>5</th><td>00-860</td><td>2001</td><td>2nd</td><td>JudicialPower</td><td>BUSINESS</td><td>CRIMINAL.DEFENDENT</td><td>liberal</td><td>0</td><td>0</td></tr>
-	<tr><th scope=row>6</th><td>00-853</td><td>2001</td><td>2nd</td><td>DueProcess</td><td>OTHER</td><td>CRIMINAL.DEFENDENT</td><td>liberal</td><td>0</td><td>1</td></tr>
-</tbody>
-</table>
-
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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"
+>
 </div>
 
 </div>
@@ -804,9 +567,8 @@ arrange2 <span class="o">&lt;-</span> arrange<span class="p">(</span>frame<span 
 <div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="c1"># order the data by Term, ascending order</span>
-arrange3 <span class="o">&lt;-</span> arrange<span class="p">(</span>frame<span class="p">,</span> Term<span class="p">)</span>
-<span class="kp">head</span><span class="p">(</span>arrange3<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span class="c1">#Calculate the area under the curve</span>
+performance<span class="p">(</span>pred<span class="p">,</span> <span class="s">&quot;auc&quot;</span><span class="p">)</span><span class="o">@</span>y.values
 </pre></div>
 
 </div>
@@ -820,17 +582,9 @@ arrange3 <span class="o">&lt;-</span> arrange<span class="p">(</span>frame<span 
 <div class="output_area"><div class="prompt output_prompt">Out[38]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Docket</th><th scope=col>Term</th><th scope=col>Circuit</th><th scope=col>Issue</th><th scope=col>Petitioner</th><th scope=col>Respondent</th><th scope=col>LowerCourt</th><th scope=col>Unconst</th><th scope=col>Reverse</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>93-1408</td><td>1994</td><td>2nd</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>2</th><td>93-1577</td><td>1994</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>3</th><td>93-1612</td><td>1994</td><td>5th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>4</th><td>94-623</td><td>1994</td><td>1st</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td></tr>
-	<tr><th scope=row>5</th><td>94-788</td><td>1994</td><td>7th</td><td>EconomicActivity</td><td>CITY</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>0</td></tr>
-	<tr><th scope=row>6</th><td>93-1251</td><td>1994</td><td>6th</td><td>JudicialPower</td><td>OTHER</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td></tr>
-</tbody>
-</table>
+<ol>
+	<p>0.693</p>
+</ol>
 
 </div>
 
@@ -845,19 +599,46 @@ arrange3 <span class="o">&lt;-</span> arrange<span class="p">(</span>frame<span 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Mutate">Mutate<a class="anchor-link" href="#Mutate">&#182;</a></h3><p>Variable transformation</p>
-
+<h3 id="Rondom-Forest-Model">Rondom Forest Model<a class="anchor-link" href="#Rondom-Forest-Model">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[53]:</div>
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="c1"># Add additional variable called &#39;Reverse10&#39; from Reverse</span>
-frame1 <span class="o">&lt;-</span> mutate<span class="p">(</span>frame<span class="p">,</span> Reverse10 <span class="o">=</span> <span class="kp">round</span><span class="p">(</span>Reverse<span class="o">*</span>runif<span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="o">*</span><span class="m">100</span><span class="p">,</span> <span class="m">0</span><span class="p">))</span>
-<span class="kp">head</span><span class="p">(</span>frame1<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span class="kn">library</span><span class="p">(</span>randomForest<span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre>train<span class="o">$</span>Reverse <span class="o">&lt;-</span> <span class="kp">as.factor</span><span class="p">(</span>train<span class="o">$</span>Reverse<span class="p">)</span>
+test<span class="o">$</span>Reverse <span class="o">&lt;-</span> <span class="kp">as.factor</span><span class="p">(</span>test<span class="o">$</span>Reverse<span class="p">)</span>
+forest_Model <span class="o">&lt;-</span> randomForest<span class="p">(</span>Reverse <span class="o">~</span> Circuit <span class="o">+</span> Issue <span class="o">+</span> Petitioner <span class="o">+</span> Respondent <span class="o">+</span> LowerCourt <span class="o">+</span> Unconst<span class="p">,</span> data <span class="o">=</span> train<span class="p">,</span> 
+                nodesize <span class="o">=</span> <span class="m">25</span><span class="p">,</span> ntrees <span class="o">=</span> <span class="m">200</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre>forest_Prediction <span class="o">&lt;-</span> predict<span class="p">(</span>forest_Model<span class="p">,</span> newdata <span class="o">=</span> test<span class="p">)</span>
+<span class="kp">table</span><span class="p">(</span>test<span class="o">$</span>Reverse<span class="p">,</span> forest_Prediction<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -868,28 +649,43 @@ frame1 <span class="o">&lt;-</span> mutate<span class="p">(</span>frame<span cla
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>Warning message:
-In c(1L, 1L, 1L, 1L, 1L, 0L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 0L, 0L, : longer object length is not a multiple of shorter object length</pre>
+<div class="output_area"><div class="prompt output_prompt">Out[43]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>   forest_Prediction
+     0  1
+  0 41 36
+  1 19 74</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
-<div class="output_area"><div class="prompt output_prompt">Out[53]:</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre>Accuracy_forest <span class="o">&lt;-</span> <span class="p">(</span><span class="m">41+74</span><span class="p">)</span><span class="o">/</span><span class="kp">sum</span><span class="p">(</span><span class="kp">table</span><span class="p">(</span>test<span class="o">$</span>Reverse<span class="p">,</span> forest_Prediction<span class="p">))</span>
+<span class="kp">round</span><span class="p">(</span>Accuracy_forest<span class="p">,</span> <span class="m">3</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[45]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Docket</th><th scope=col>Term</th><th scope=col>Circuit</th><th scope=col>Issue</th><th scope=col>Petitioner</th><th scope=col>Respondent</th><th scope=col>LowerCourt</th><th scope=col>Unconst</th><th scope=col>Reverse</th><th scope=col>Reverse10</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>93-1408</td><td>1994</td><td>2nd</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td><td>64</td></tr>
-	<tr><th scope=row>2</th><td>93-1577</td><td>1994</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td><td>39</td></tr>
-	<tr><th scope=row>3</th><td>93-1612</td><td>1994</td><td>5th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>liberal</td><td>0</td><td>1</td><td>82</td></tr>
-	<tr><th scope=row>4</th><td>94-623</td><td>1994</td><td>1st</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td><td>75</td></tr>
-	<tr><th scope=row>5</th><td>94-1175</td><td>1995</td><td>7th</td><td>JudicialPower</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>0</td><td>1</td><td>36</td></tr>
-	<tr><th scope=row>6</th><td>95-129</td><td>1995</td><td>9th</td><td>EconomicActivity</td><td>BUSINESS</td><td>BUSINESS</td><td>conser</td><td>1</td><td>0</td><td>0</td></tr>
-</tbody>
-</table>
-
+0.676
 </div>
 
 </div>
@@ -903,24 +699,41 @@ In c(1L, 1L, 1L, 1L, 1L, 0L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 0L, 0L, : longer object
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Group_by-and-Summarise">Group_by and Summarise<a class="anchor-link" href="#Group_by-and-Summarise">&#182;</a></h3><p>Summary functions:</p>
-<ul>
-<p>min(x0, median(x), mean(), max(x), sum(x), quantile(x, p), n(), n_distinct(x), sd(x), var(x), IQR(x), mad(x)</p>
-<p>sum(x &gt; 10), mean(x &gt; 10)</p>
-</ul>
+<p>The random forest model has improved the accuracy a little bit.</p>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="k-fold-Cross-Validation">k-fold Cross Validation<a class="anchor-link" href="#k-fold-Cross-Validation">&#182;</a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[55]:</div>
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="c1"># Group the data by Term and get sum of Reverse10 for each Term</span>
-by_Term <span class="o">&lt;-</span> group_by<span class="p">(</span>frame1<span class="p">,</span> Term<span class="p">)</span>
-summary1 <span class="o">&lt;-</span> summarise<span class="p">(</span>by_Term<span class="p">,</span> total <span class="o">=</span> <span class="kp">sum</span><span class="p">(</span>Reverse10<span class="p">))</span>
-<span class="kp">head</span><span class="p">(</span>summary1<span class="p">)</span>
+<div class=" highlight hl-r"><pre>numFolds <span class="o">&lt;-</span> trainControl<span class="p">(</span>method<span class="o">=</span><span class="s">&quot;cv&quot;</span><span class="p">,</span> number<span class="o">=</span><span class="m">10</span><span class="p">)</span>
+cpGrid <span class="o">&lt;-</span> <span class="kp">expand.grid</span><span class="p">(</span><span class="m">.</span>cp <span class="o">=</span> <span class="kp">seq</span><span class="p">(</span><span class="m">0.01</span><span class="p">,</span> <span class="m">0.5</span><span class="p">,</span> <span class="m">0.01</span><span class="p">))</span> <span class="c1"># defines the cp parameter to test as numbers from 0.01 to 0.5 in increment of 0.01.</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[57]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre>train<span class="p">(</span>Reverse <span class="o">~</span> Circuit <span class="o">+</span> Issue <span class="o">+</span> Petitioner <span class="o">+</span> Respondent <span class="o">+</span> LowerCourt <span class="o">+</span> Unconst<span class="p">,</span> data <span class="o">=</span> train<span class="p">,</span> 
+                method <span class="o">=</span> <span class="s">&quot;rpart&quot;</span><span class="p">,</span> trControl <span class="o">=</span> numFolds<span class="p">,</span> tuneGrid <span class="o">=</span> cpGrid<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -931,21 +744,77 @@ summary1 <span class="o">&lt;-</span> summarise<span class="p">(</span>by_Term<s
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[55]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[57]:</div>
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Term</th><th scope=col>total</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>1994</td><td>2370</td></tr>
-	<tr><th scope=row>2</th><td>1995</td><td>2218</td></tr>
-	<tr><th scope=row>3</th><td>1996</td><td>2191</td></tr>
-	<tr><th scope=row>4</th><td>1997</td><td>2660</td></tr>
-	<tr><th scope=row>5</th><td>1998</td><td>1939</td></tr>
-	<tr><th scope=row>6</th><td>1999</td><td>2119</td></tr>
-</tbody>
-</table>
 
+<div class="output_text output_subarea output_execute_result">
+<pre>CART 
+
+396 samples
+  8 predictor
+  2 classes: &apos;0&apos;, &apos;1&apos; 
+
+No pre-processing
+Resampling: Cross-Validated (10 fold) 
+
+Summary of sample sizes: 356, 356, 357, 356, 357, 356, ... 
+
+Resampling results across tuning parameters:
+
+  cp    Accuracy  Kappa   Accuracy SD  Kappa SD
+  0.01  0.644     0.2655  0.07412      0.1556  
+  0.02  0.639     0.2572  0.05265      0.1110  
+  0.03  0.626     0.2373  0.05089      0.1074  
+  0.04  0.626     0.2410  0.05089      0.1108  
+  0.05  0.644     0.2833  0.04053      0.0795  
+  0.06  0.644     0.2833  0.04053      0.0795  
+  0.07  0.644     0.2833  0.04053      0.0795  
+  0.08  0.644     0.2833  0.04053      0.0795  
+  0.09  0.644     0.2833  0.04053      0.0795  
+  0.10  0.644     0.2833  0.04053      0.0795  
+  0.11  0.644     0.2833  0.04053      0.0795  
+  0.12  0.644     0.2833  0.04053      0.0795  
+  0.13  0.644     0.2833  0.04053      0.0795  
+  0.14  0.644     0.2833  0.04053      0.0795  
+  0.15  0.644     0.2833  0.04053      0.0795  
+  0.16  0.644     0.2833  0.04053      0.0795  
+  0.17  0.644     0.2833  0.04053      0.0795  
+  0.18  0.644     0.2833  0.04053      0.0795  
+  0.19  0.644     0.2833  0.04053      0.0795  
+  0.20  0.626     0.2398  0.04371      0.1029  
+  0.21  0.611     0.2004  0.04114      0.1123  
+  0.22  0.571     0.0855  0.03326      0.1113  
+  0.23  0.545     0.0000  0.00596      0.0000  
+  0.24  0.545     0.0000  0.00596      0.0000  
+  0.25  0.545     0.0000  0.00596      0.0000  
+  0.26  0.545     0.0000  0.00596      0.0000  
+  0.27  0.545     0.0000  0.00596      0.0000  
+  0.28  0.545     0.0000  0.00596      0.0000  
+  0.29  0.545     0.0000  0.00596      0.0000  
+  0.30  0.545     0.0000  0.00596      0.0000  
+  0.31  0.545     0.0000  0.00596      0.0000  
+  0.32  0.545     0.0000  0.00596      0.0000  
+  0.33  0.545     0.0000  0.00596      0.0000  
+  0.34  0.545     0.0000  0.00596      0.0000  
+  0.35  0.545     0.0000  0.00596      0.0000  
+  0.36  0.545     0.0000  0.00596      0.0000  
+  0.37  0.545     0.0000  0.00596      0.0000  
+  0.38  0.545     0.0000  0.00596      0.0000  
+  0.39  0.545     0.0000  0.00596      0.0000  
+  0.40  0.545     0.0000  0.00596      0.0000  
+  0.41  0.545     0.0000  0.00596      0.0000  
+  0.42  0.545     0.0000  0.00596      0.0000  
+  0.43  0.545     0.0000  0.00596      0.0000  
+  0.44  0.545     0.0000  0.00596      0.0000  
+  0.45  0.545     0.0000  0.00596      0.0000  
+  0.46  0.545     0.0000  0.00596      0.0000  
+  0.47  0.545     0.0000  0.00596      0.0000  
+  0.48  0.545     0.0000  0.00596      0.0000  
+  0.49  0.545     0.0000  0.00596      0.0000  
+  0.50  0.545     0.0000  0.00596      0.0000  
+
+Accuracy was used to select the optimal model using  the largest value.
+The final value used for the model was cp = 0.19. </pre>
 </div>
 
 </div>
@@ -956,15 +825,13 @@ summary1 <span class="o">&lt;-</span> summarise<span class="p">(</span>by_Term<s
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[56]:</div>
+<div class="prompt input_prompt">In&nbsp;[58]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre>summary2 <span class="o">&lt;-</span> summarise<span class="p">(</span>filter<span class="p">(</span>by_Term<span class="p">,</span> <span class="o">!</span><span class="kp">is.na</span><span class="p">(</span>Reverse10<span class="p">)),</span>
-                     med <span class="o">=</span> median<span class="p">(</span>Reverse10<span class="p">),</span>
-                     mean <span class="o">=</span> <span class="kp">mean</span><span class="p">(</span>Reverse10<span class="p">),</span>
-                     max <span class="o">=</span> <span class="kp">max</span><span class="p">(</span>Reverse10<span class="p">),</span> 
-                     Q90 <span class="o">=</span> quantile<span class="p">(</span>Reverse10<span class="p">,</span> <span class="m">0.9</span><span class="p">))</span>
-<span class="kp">head</span><span class="p">(</span>summary2<span class="p">)</span>
+<div class=" highlight hl-r"><pre>tree_ModelCV <span class="o">&lt;-</span> rpart<span class="p">(</span>Reverse <span class="o">~</span> Circuit <span class="o">+</span> Issue <span class="o">+</span> Petitioner <span class="o">+</span> Respondent <span class="o">+</span> LowerCourt <span class="o">+</span> Unconst<span class="p">,</span> data <span class="o">=</span> train<span class="p">,</span> 
+                    method <span class="o">=</span> <span class="s">&quot;class&quot;</span><span class="p">,</span> cp <span class="o">=</span> <span class="m">0.19</span><span class="p">)</span>
+treeCV_Prediction <span class="o">&lt;-</span> predict<span class="p">(</span>tree_ModelCV<span class="p">,</span> newdata<span class="o">=</span>test<span class="p">,</span> type <span class="o">=</span> <span class="s">&quot;class&quot;</span><span class="p">)</span>
+<span class="kp">table</span><span class="p">(</span>test<span class="o">$</span>Reverse<span class="p">,</span> treeCV_Prediction<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -975,21 +842,43 @@ summary1 <span class="o">&lt;-</span> summarise<span class="p">(</span>by_Term<s
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[56]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[58]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>   treeCV_Prediction
+     0  1
+  0 59 18
+  1 29 64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[60]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre>Accuracy_treeCV <span class="o">&lt;-</span> <span class="p">(</span><span class="m">59+64</span><span class="p">)</span><span class="o">/</span><span class="kp">sum</span><span class="p">(</span><span class="kp">table</span><span class="p">(</span>test<span class="o">$</span>Reverse<span class="p">,</span> treeCV_Prediction<span class="p">))</span>
+<span class="kp">round</span><span class="p">(</span>Accuracy_treeCV<span class="p">,</span> <span class="m">3</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[60]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-<thead><tr><th></th><th scope=col>Term</th><th scope=col>med</th><th scope=col>mean</th><th scope=col>max</th><th scope=col>Q90</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>1994</td><td>7.5</td><td>29.625</td><td>93</td><td>75.2</td></tr>
-	<tr><th scope=row>2</th><td>1995</td><td>14.5</td><td>30.80556</td><td>93</td><td>75</td></tr>
-	<tr><th scope=row>3</th><td>1996</td><td>11</td><td>27.04938</td><td>93</td><td>75</td></tr>
-	<tr><th scope=row>4</th><td>1997</td><td>36</td><td>30.93023</td><td>93</td><td>76</td></tr>
-	<tr><th scope=row>5</th><td>1998</td><td>7.5</td><td>25.51316</td><td>93</td><td>72</td></tr>
-	<tr><th scope=row>6</th><td>1999</td><td>11</td><td>29.84507</td><td>93</td><td>82</td></tr>
-</tbody>
-</table>
-
+0.724
 </div>
 
 </div>
@@ -997,6 +886,16 @@ summary1 <span class="o">&lt;-</span> summarise<span class="p">(</span>by_Term<s
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Using cross validation helped us to select a good parameter which evenually helped to improve the classification accuracy.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1014,9 +913,9 @@ summary1 <span class="o">&lt;-</span> summarise<span class="p">(</span>by_Term<s
     </div>
   </div>
   
-	<footer>
+  <footer>
 	  <p style ="text-align:left">&copy; 2015 Desta Hailemariam </p>
 	</footer>
-	
-  </body>
+  
+</body>
 </html>
