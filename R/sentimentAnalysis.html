@@ -39,6 +39,9 @@
 	</nav>
 
 
+
+
+
 <title>Text Mining and Sentiment Analysis Using R: Analysis of 2016 Presidential Candidates</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
@@ -221,7 +224,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This post analyzes sentiment of tweets towards the 2016 presidatial candidate front runners using R. Tweets involving Bernie Sanders, Donald Trump, Hillary Clinton, and Ted Cruz were mined and analyzed.</p>
+<p>This post analyzes sentiment of tweets towards the 2016 presidatial candidate front runners using R. Tweets containing the names of Bernie Sanders, Donald Trump, Hillary Clinton, and Ted Cruz were mined and analyzed.</p>
 
 </div>
 </div>
@@ -246,11 +249,9 @@ div#notebook {
 <span class="kn">require</span><span class="p">(</span>RCurl<span class="p">)</span>
 <span class="kn">library</span><span class="p">(</span>stringr<span class="p">)</span>
 <span class="kn">library</span><span class="p">(</span>tm<span class="p">)</span>
-<span class="kn">library</span><span class="p">(</span><span class="s">&quot;plyr&quot;</span><span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>plyr<span class="p">)</span>
 <span class="kn">library</span><span class="p">(</span>tm<span class="p">)</span>
 <span class="kn">library</span><span class="p">(</span>wordcloud<span class="p">)</span>
-<span class="c1">#install.packages(&quot;rpart.plot&quot;, repos=&#39;http://cran.us.r-project.org&#39;)</span>
-<span class="c1">#library(rpart.plot)</span>
 </pre></div>
 
 </div>
