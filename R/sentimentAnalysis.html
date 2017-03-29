@@ -7,7 +7,7 @@ div.prompt {display:none}
 
   <head>
     <meta charset="ITF-8">
-	<title>Desthood</title>
+	<title>Datascience Page</title>
 	<link rel="stylesheet" type="text/css" href="../style3.css">
 	<!--[if lt IE 9]>
 	<script>
@@ -23,16 +23,16 @@ div.prompt {display:none}
  
   <head>
   <body>
-	<header class="banner">
-	  <h1> Desta Hailemariam</h1>
-	  	  	  
-	  <p> Ph.D. candidate, <a style="color:#ffff00; text-decoration:none" href="http://www.binghamton.edu/ssie/index.html" target="_blank">Binghamton University </span> </a> </p>
-	 
-	  <p> Graduate Research Associate, Watson Institute for Systems Excellence - <a style="color:#ffff00; text-decoration:none" href="https://www.binghamton.edu/watson/research/wise/" target="_blank">WISE </span></a> 
-	  <span style="width:120px;display:inline-block"></span> <a  style="color:#ffff00; text-decoration:none" href ="../resume.pdf"   target="_blank">Resume</a> <span style="width:100px;display:inline-block"></span> </p>
-	  
-	</header>
-	
+    <header class="banner">
+  	  <h1> Desta Hailemariam, Ph.D.</h1>
+
+  	  <p> Data Scientist at <a style="color:#ffff00; text-decoration:none" href="http://www.houstonmethodist.org/research/our-research/systems-medicine-bioinformatics/" target="_blank">Houston Methodist </span> </a> </p>
+
+  	  <p>
+  	  <span style="width:120px;display:inline-block"></span> <a  style="color:#ffff00; text-decoration:none" href ="../resume1.pdf"   target="_blank">Resume</a> <span style="width:100px;display:inline-block"></span> </p>
+
+  	</header>
+
 	<nav>
 	  <ul>
 	    <li><a style="text-decoration:none" href="http://datascience-is-fun.com/">Home</a></li>
@@ -40,7 +40,7 @@ div.prompt {display:none}
 	    <li><a style="text-decoration:none" href="http://datascience-is-fun.com/R/index.html">R</a></li>
 	    <li><a style="text-decoration:none" href="http://datascience-is-fun.com/Python/index.html">Python</a></li>
 		<li><a style="text-decoration:none" href="http://datascience-is-fun.com/Tableau/index.html">Tableau</a></li>
-	  </ul> 
+	  </ul>
 	</nav>
 
 
@@ -174,14 +174,14 @@ div#notebook {
   div.cell {
     display: block;
     page-break-inside: avoid;
-  } 
-  div.output_wrapper { 
-    display: block;
-    page-break-inside: avoid; 
   }
-  div.output { 
+  div.output_wrapper {
     display: block;
-    page-break-inside: avoid; 
+    page-break-inside: avoid;
+  }
+  div.output {
+    display: block;
+    page-break-inside: avoid;
   }
 }
 </style>
@@ -229,7 +229,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This post analyzes sentiment of tweets towards the 2016 presidatial candidate front runners using R. CART and random forest classification models are also developed to classify 
+<p>This post analyzes sentiment of tweets towards the 2016 presidatial candidate front runners using R. CART and random forest classification models are also developed to classify
 tweets as Positive, Neutral, or Negative.Tweets containing the names of Bernie Sanders, Donald Trump, Hillary Clinton, and Ted Cruz were mined and analyzed.</p>
 
 
@@ -296,8 +296,8 @@ access_token <span class="o">=</span> <span class="s">&quot;access token&quot;</
 <span class="kp">setwd</span><span class="p">(</span><span class="s">&quot;C:/MOOC/Text Mining&quot;</span><span class="p">)</span>
 
 
-download.file<span class="p">(</span>url<span class="o">=</span><span class="s">&quot;http://curl.haxx.se/ca/cacert.pem&quot;</span><span class="p">,</span> 
-              destfile <span class="o">=</span> <span class="s">&quot;C:/MOOC/Text Mining/cacert.pem&quot;</span><span class="p">,</span> 
+download.file<span class="p">(</span>url<span class="o">=</span><span class="s">&quot;http://curl.haxx.se/ca/cacert.pem&quot;</span><span class="p">,</span>
+              destfile <span class="o">=</span> <span class="s">&quot;C:/MOOC/Text Mining/cacert.pem&quot;</span><span class="p">,</span>
               method <span class="o">=</span> <span class="s">&quot;auto&quot;</span><span class="p">)</span>
 
 
@@ -546,7 +546,7 @@ tweetsCorpus <span class="o">&lt;-</span> tm_map<span class="p">(</span>tweetsCo
 
 <span class="c1">#remove stopwords</span>
 tweetsCorpus <span class="o">&lt;-</span> tm_map<span class="p">(</span>tweetsCorpus<span class="p">,</span> removeWords<span class="p">,</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;bernie&quot;</span><span class="p">,</span> <span class="s">&quot;sanders&quot;</span><span class="p">,</span> <span class="s">&quot;trump&quot;</span><span class="p">,</span> <span class="s">&quot;donald&quot;</span><span class="p">,</span> <span class="s">&quot;cruz&quot;</span><span class="p">,</span> <span class="s">&quot;ted&quot;</span><span class="p">,</span> <span class="s">&quot;hillary&quot;</span><span class="p">,</span> <span class="s">&quot;clinton&quot;</span><span class="p">,</span> stopwords<span class="p">(</span><span class="s">&quot;english&quot;</span><span class="p">)))</span>
-    
+
 <span class="c1">#remove white spaces</span>
 tweetsCorpus <span class="o">&lt;-</span> tm_map<span class="p">(</span>tweetsCorpus<span class="p">,</span> stripWhitespace<span class="p">)</span>
 
@@ -699,8 +699,8 @@ sentence <span class="o">&lt;-</span> <span class="kp">sapply</span><span class=
 word.list <span class="o">&lt;-</span> str_split<span class="p">(</span>sentence<span class="p">,</span> <span class="s">&quot;\\s+&quot;</span><span class="p">)</span>
 <span class="c1">#word.list &lt;- str_replace_all(word.list,&quot;[^[:graph:]]&quot;, &quot; &quot;)</span>
 words <span class="o">&lt;-</span> <span class="kp">unlist</span><span class="p">(</span>word.list<span class="p">)</span>
-    
-   
+
+
     <span class="c1">#remove non-alphabetic characters</span>
 <span class="c1">#alpha_num &lt;- grep(words, pattern = &quot;[a-z|0-9]&quot;, ignore.case = T)</span>
 <span class="c1">#words &lt;- paste(words[alpha_num], collapse = &quot; &quot;)</span>
