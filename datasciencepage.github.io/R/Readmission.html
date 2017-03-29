@@ -20,29 +20,28 @@ div.prompt {display:none}
       document.createElement("section");
 	</script>
 	<![endif]-->
-
+ 
   <head>
   <body>
 	<header class="banner">
 	  <h1> Desta Hailemariam</h1>
-
+	  	  	  
 	  <p> Ph.D. candidate, <a style="color:#ffff00; text-decoration:none" href="http://www.binghamton.edu/ssie/index.html" target="_blank">Binghamton University </span> </a> </p>
-
-	  <p> Graduate Research Associate, Watson Institute for Systems Excellence - <a style="color:#ffff00; text-decoration:none" href="https://www.binghamton.edu/watson/research/wise/" target="_blank">WISE </span></a>
+	 
+	  <p> Graduate Research Associate, Watson Institute for Systems Excellence - <a style="color:#ffff00; text-decoration:none" href="https://www.binghamton.edu/watson/research/wise/" target="_blank">WISE </span></a> 
 	  <span style="width:120px;display:inline-block"></span> <a  style="color:#ffff00; text-decoration:none" href ="../resume.pdf"   target="_blank">Resume</a> <span style="width:100px;display:inline-block"></span> </p>
-
+	  
 	</header>
-
-  <nav>
-    <ul>
-      <li><a style="text-decoration:none" href="http://datasciencepage.com/">Home</a></li>
-      <li><a style="text-decoration:none" href="http://datasciencepage.com/Profile/index.html">Profile</a></li>
-      <li><a style="text-decoration:none" href="http://datasciencepage.com/R/index.html">R</a></li>
-      <li><a style="text-decoration:none" href="http://datasciencepage.com/Python/index.html">Python</a></li>
-      <li><a style="text-decoration:none" href="http://datasciencepage.com/Tableau/index.html">Tableau</a></li>
-      <li><a style="text-decoration:none" href="http://datasciencepage.com/Profile/contact.html">Contact Me</a></li>
-    </ul>
-  </nav>
+	
+	<nav>
+	  <ul>
+	    <li><a style="text-decoration:none" href="http://datascience-is-fun.com/">Home</a></li>
+	    <li><a style="text-decoration:none" href="http://datascience-is-fun.com/Profile/index.html">Profile</a></li>
+	    <li><a style="text-decoration:none" href="http://datascience-is-fun.com/R/index.html">R</a></li>
+	    <li><a style="text-decoration:none" href="http://datascience-is-fun.com/Python/index.html">Python</a></li>
+		<li><a style="text-decoration:none" href="http://datascience-is-fun.com/Tableau/index.html">Tableau</a></li>
+	  </ul> 
+	</nav>
 	
 
 <title>Hospital Readmission</title>
@@ -172,14 +171,14 @@ div#notebook {
   div.cell {
     display: block;
     page-break-inside: avoid;
-  }
-  div.output_wrapper {
+  } 
+  div.output_wrapper { 
     display: block;
-    page-break-inside: avoid;
+    page-break-inside: avoid; 
   }
-  div.output {
+  div.output { 
     display: block;
-    page-break-inside: avoid;
+    page-break-inside: avoid; 
   }
 }
 </style>
@@ -224,9 +223,9 @@ div#notebook {
 </div>
 
 <br/>
-<p> Hospital readmissions are among the challenge that hospitals are facing today. Most of the readmission are believed to be preventable.
-Predictive models can be used to assess the chance of readmission of a patient within a given period. If the risk of readmission is high,
-patients can receive extended care before discharge so their chances of readmission are reduced. In this post, I will develop a logistic regression
+<p> Hospital readmissions are among the challenge that hospitals are facing today. Most of the readmission are believed to be preventable. 
+Predictive models can be used to assess the chance of readmission of a patient within a given period. If the risk of readmission is high, 
+patients can receive extended care before discharge so their chances of readmission are reduced. In this post, I will develop a logistic regression 
 model that predicts the risk of readmission of diabetic patients.</p>
 
 <br/>
@@ -364,9 +363,9 @@ model that predicts the risk of readmission of diabetic patients.</p>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span class="c1"># The values for the following features are missing and need to be removed</span>
-frame1<span class="o">$</span>glipizide.metformin <span class="o">&lt;-</span><span class="kc">NULL</span>
-frame1<span class="o">$</span>glimepiride.pioglitazone <span class="o">&lt;-</span><span class="kc">NULL</span>
-frame1<span class="o">$</span>metformin.rosiglitazone <span class="o">&lt;-</span><span class="kc">NULL</span>
+frame1<span class="o">$</span>glipizide.metformin <span class="o">&lt;-</span><span class="kc">NULL</span>     
+frame1<span class="o">$</span>glimepiride.pioglitazone <span class="o">&lt;-</span><span class="kc">NULL</span>  
+frame1<span class="o">$</span>metformin.rosiglitazone <span class="o">&lt;-</span><span class="kc">NULL</span> 
 frame1<span class="o">$</span>metformin.pioglitazone <span class="o">&lt;-</span><span class="kc">NULL</span>
 </pre></div>
 
@@ -410,15 +409,15 @@ bar.plot <span class="o">&lt;-</span> <span class="kr">function</span><span clas
   <span class="kr">if</span><span class="p">(</span><span class="kp">is.factor</span><span class="p">(</span>frame1<span class="p">[,</span> x<span class="p">])){</span>
     sums <span class="o">&lt;-</span> <span class="kp">summary</span><span class="p">(</span>frame1<span class="p">[,</span> x<span class="p">],</span> counts <span class="o">=</span> n<span class="p">())</span>
     msk <span class="o">&lt;-</span> <span class="kp">names</span><span class="p">(</span>sums<span class="p">[</span><span class="kp">which</span><span class="p">(</span>sums <span class="o">&gt;</span> <span class="m">100</span><span class="p">)])</span> <span class="c1"># if a feature has less than 100 observations, it will not be displayed</span>
-    tmp <span class="o">&lt;-</span> frame1<span class="p">[</span>frame1<span class="p">[,</span> x<span class="p">]</span> <span class="o">%in%</span> msk<span class="p">,</span> <span class="kt">c</span><span class="p">(</span><span class="s">&#39;readmi_class&#39;</span><span class="p">,</span> x<span class="p">)]</span>
+    tmp <span class="o">&lt;-</span> frame1<span class="p">[</span>frame1<span class="p">[,</span> x<span class="p">]</span> <span class="o">%in%</span> msk<span class="p">,</span> <span class="kt">c</span><span class="p">(</span><span class="s">&#39;readmi_class&#39;</span><span class="p">,</span> x<span class="p">)]</span>    
     <span class="kr">if</span><span class="p">(</span><span class="kp">strsplit</span><span class="p">(</span>x<span class="p">,</span> <span class="s">&#39;[-]&#39;</span><span class="p">)[[</span><span class="m">1</span><span class="p">]][</span><span class="m">1</span><span class="p">]</span> <span class="o">==</span> x<span class="p">){</span>
       g <span class="o">&lt;-</span> ggplot<span class="p">(</span>tmp<span class="p">,</span> aes_string<span class="p">(</span>x<span class="p">))</span> <span class="o">+</span>
         geom_bar<span class="p">()</span> <span class="o">+</span>
         facet_grid<span class="p">(</span><span class="m">.</span> <span class="o">~</span> readmi_class<span class="p">)</span> <span class="o">+</span>
         ggtitle<span class="p">(</span><span class="kp">paste</span><span class="p">(</span><span class="s">&#39;Readmissions by level of&#39;</span><span class="p">,</span> x<span class="p">))</span>
-      <span class="kp">print</span><span class="p">(</span>g<span class="p">)</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+      <span class="kp">print</span><span class="p">(</span>g<span class="p">)</span>    
+    <span class="p">}</span>    
+  <span class="p">}</span>    
 <span class="p">}</span>
 cols <span class="o">&lt;-</span> <span class="kp">names</span><span class="p">(</span>frame1<span class="p">)</span>
 cols <span class="o">&lt;-</span> cols<span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="kp">length</span><span class="p">(</span>cols<span class="p">)</span> <span class="o">-</span> <span class="m">1</span><span class="p">)]</span>
@@ -571,9 +570,9 @@ test<span class="o">&lt;-</span>frame1<span class="p">[</span>split<span class="
 Call:
 glm(formula = readmi_class ~ ., family = &quot;binomial&quot;, data = train)
 
-Deviance Residuals:
-    Min       1Q   Median       3Q      Max
--3.7822  -1.0421  -0.8266   1.2059   1.8808
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-3.7822  -1.0421  -0.8266   1.2059   1.8808  
 
 Coefficients:
                                           Estimate Std. Error z value Pr(&gt;|z|)
@@ -635,65 +634,65 @@ admission_type_descriptionTrauma Center -1.180e+01  1.607e+02  -0.073 0.941465
 admission_type_descriptionunknown        3.211e-01  8.072e-02   3.977 6.97e-05
 admission_type_descriptionUrgent         8.080e-02  5.333e-02   1.515 0.129745
 num_meds_classnormal                     2.057e-02  4.211e-02   0.489 0.625177
-
-(Intercept)
+                                           
+(Intercept)                                
 discharge_disposition_id                ***
-admission_source_id
+admission_source_id                        
 time_in_hospital                        ***
-num_lab_procedures
+num_lab_procedures                         
 num_procedures                          ***
 number_outpatient                       ***
 number_emergency                        ***
 number_inpatient                        ***
 number_diagnoses                        ***
-max_glu_serum&gt;300                       .
-max_glu_serumNone                       **
-max_glu_serumNorm
-A1Cresult&gt;8
-A1CresultNone
-A1CresultNorm                           .
-metforminNo                             *
-metforminSteady                         .
-metforminUp
-repaglinideNo
-repaglinideSteady
-repaglinideUp
-nateglinideNo
-nateglinideSteady
-nateglinideUp
-glimepirideNo
-glimepirideSteady
-glimepirideUp
-glipizideNo                             *
-glipizideSteady
-glipizideUp                             .
-glyburideNo
-glyburideSteady
-glyburideUp
-tolbutamideSteady
-pioglitazoneNo
-pioglitazoneSteady
-pioglitazoneUp
-rosiglitazoneNo
-rosiglitazoneSteady
-rosiglitazoneUp
-troglitazoneSteady
-tolazamideSteady
-tolazamideUp
-insulinNo
+max_glu_serum&gt;300                       .  
+max_glu_serumNone                       ** 
+max_glu_serumNorm                          
+A1Cresult&gt;8                                
+A1CresultNone                              
+A1CresultNorm                           .  
+metforminNo                             *  
+metforminSteady                         .  
+metforminUp                                
+repaglinideNo                              
+repaglinideSteady                          
+repaglinideUp                              
+nateglinideNo                              
+nateglinideSteady                          
+nateglinideUp                              
+glimepirideNo                              
+glimepirideSteady                          
+glimepirideUp                              
+glipizideNo                             *  
+glipizideSteady                            
+glipizideUp                             .  
+glyburideNo                                
+glyburideSteady                            
+glyburideUp                                
+tolbutamideSteady                          
+pioglitazoneNo                             
+pioglitazoneSteady                         
+pioglitazoneUp                             
+rosiglitazoneNo                            
+rosiglitazoneSteady                        
+rosiglitazoneUp                            
+troglitazoneSteady                         
+tolazamideSteady                           
+tolazamideUp                               
+insulinNo                                  
 insulinSteady                           ***
-insulinUp
-glyburide.metforminNo
-glyburide.metforminSteady
-glyburide.metforminUp
-changeNo
+insulinUp                                  
+glyburide.metforminNo                      
+glyburide.metforminSteady                  
+glyburide.metforminUp                      
+changeNo                                   
 diabetesMedYes                          ***
-admission_type_descriptionEmergency
-admission_type_descriptionNewborn
-admission_type_descriptionTrauma Center
+admission_type_descriptionEmergency        
+admission_type_descriptionNewborn          
+admission_type_descriptionTrauma Center    
 admission_type_descriptionunknown       ***
-admission_type_descriptionUrgent
-num_meds_classnormal
+admission_type_descriptionUrgent           
+num_meds_classnormal                       
 ---
 Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &apos;.&apos; 0.1 &apos; &apos; 1
 
@@ -899,7 +898,7 @@ performance<span class="p">(</span>ROCR_prediction<span class="p">,</span> <span
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>
+<pre>     
       FALSE TRUE
   NO   5231 1353
   YES  3352 2276</pre>
@@ -936,8 +935,8 @@ accuracy <span class="o">=</span> <span class="kp">round</span><span class="p">(
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>accuracy:  0.61
-sensitivity:  0.4
+<pre>accuracy:  0.61 
+sensitivity:  0.4 
 specifity:  0.79</pre>
 </div>
 </div>

@@ -1,1 +1,1 @@
-# datasciencepage.github.io
+# dataschiencepage.github.io
