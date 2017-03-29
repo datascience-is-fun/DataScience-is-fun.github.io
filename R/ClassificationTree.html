@@ -15,28 +15,29 @@
       document.createElement("section");
 	</script>
 	<![endif]-->
- 
+
   <head>
   <header class="banner">
 	  <h1> Desta Hailemariam</h1>
-	  	  	  
+
 	  <p> Ph.D. candidate, <a style="color:#ffff00; text-decoration:none" href="http://www.binghamton.edu/ssie/index.html" target="_blank">Binghamton University </span> </a> </p>
-	 
-	  <p> Graduate Research Associate, Watson Institute for Systems Excellence - <a style="color:#ffff00; text-decoration:none" href="https://www.binghamton.edu/watson/research/wise/" target="_blank">WISE </span></a> 
+
+	  <p> Graduate Research Associate, Watson Institute for Systems Excellence - <a style="color:#ffff00; text-decoration:none" href="https://www.binghamton.edu/watson/research/wise/" target="_blank">WISE </span></a>
 	  <span style="width:120px;display:inline-block"></span> <a  style="color:#ffff00; text-decoration:none" href ="../resume1.pdf"   target="_blank">Resume</a> <span style="width:100px;display:inline-block"></span> </p>
-	  
+
 	</header>
-	
-	<nav>
+
+  <nav>
 	  <ul>
-	    <li><a style="text-decoration:none" href="http://datascience-is-fun.com/">Home</a></li>
-	    <li><a style="text-decoration:none" href="http://datascience-is-fun.com/Profile/index.html">Profile</a></li>
-	    <li><a style="text-decoration:none" href="http://datascience-is-fun.com/R/index.html">R</a></li>
-	    <li><a style="text-decoration:none" href="http://datascience-is-fun.com/Python/index.html">Python</a></li>
-		<li><a style="text-decoration:none" href="http://datascience-is-fun.com/Tableau/index.html">Tableau</a></li>
-	  </ul> 
+	    <li><a style="text-decoration:none" href="http://datasciencepage.com/">Home</a></li>
+	    <li><a style="text-decoration:none" href="http://datasciencepage.com/Profile/index.html">Profile</a></li>
+	    <li><a style="text-decoration:none" href="http://datasciencepage.com/R/index.html">R</a></li>
+	    <li><a style="text-decoration:none" href="http://datasciencepage.com/Python/index.html">Python</a></li>
+		  <li><a style="text-decoration:none" href="http://datasciencepage.com/Tableau/index.html">Tableau</a></li>
+		  <li><a style="text-decoration:none" href="http://datasciencepage.com/Profile/contact.html">Contact Me</a></li>
+	  </ul>
 	</nav>
-	
+
 <title>Classification Tree</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
@@ -164,14 +165,14 @@ div#notebook {
   div.cell {
     display: block;
     page-break-inside: avoid;
-  } 
-  div.output_wrapper { 
-    display: block;
-    page-break-inside: avoid; 
   }
-  div.output { 
+  div.output_wrapper {
     display: block;
-    page-break-inside: avoid; 
+    page-break-inside: avoid;
+  }
+  div.output {
+    display: block;
+    page-break-inside: avoid;
   }
 }
 </style>
@@ -401,7 +402,7 @@ Error in library(rpart.plot): there is no package called &apos;rpart.plot&apos;
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre>tree_Model <span class="o">&lt;-</span> rpart<span class="p">(</span>Reverse <span class="o">~</span> Circuit <span class="o">+</span> Issue <span class="o">+</span> Petitioner <span class="o">+</span> Respondent <span class="o">+</span> LowerCourt <span class="o">+</span> Unconst<span class="p">,</span> data <span class="o">=</span> train<span class="p">,</span> 
+<div class=" highlight hl-r"><pre>tree_Model <span class="o">&lt;-</span> rpart<span class="p">(</span>Reverse <span class="o">~</span> Circuit <span class="o">+</span> Issue <span class="o">+</span> Petitioner <span class="o">+</span> Respondent <span class="o">+</span> LowerCourt <span class="o">+</span> Unconst<span class="p">,</span> data <span class="o">=</span> train<span class="p">,</span>
                     method <span class="o">=</span> <span class="s">&quot;class&quot;</span><span class="p">,</span> minbucket <span class="o">=</span> <span class="m">25</span><span class="p">)</span>
 </pre></div>
 
@@ -621,7 +622,7 @@ performance<span class="p">(</span>pred<span class="p">,</span> <span class="s">
     <div class="input_area">
 <div class=" highlight hl-r"><pre>train<span class="o">$</span>Reverse <span class="o">&lt;-</span> <span class="kp">as.factor</span><span class="p">(</span>train<span class="o">$</span>Reverse<span class="p">)</span>
 test<span class="o">$</span>Reverse <span class="o">&lt;-</span> <span class="kp">as.factor</span><span class="p">(</span>test<span class="o">$</span>Reverse<span class="p">)</span>
-forest_Model <span class="o">&lt;-</span> randomForest<span class="p">(</span>Reverse <span class="o">~</span> Circuit <span class="o">+</span> Issue <span class="o">+</span> Petitioner <span class="o">+</span> Respondent <span class="o">+</span> LowerCourt <span class="o">+</span> Unconst<span class="p">,</span> data <span class="o">=</span> train<span class="p">,</span> 
+forest_Model <span class="o">&lt;-</span> randomForest<span class="p">(</span>Reverse <span class="o">~</span> Circuit <span class="o">+</span> Issue <span class="o">+</span> Petitioner <span class="o">+</span> Respondent <span class="o">+</span> LowerCourt <span class="o">+</span> Unconst<span class="p">,</span> data <span class="o">=</span> train<span class="p">,</span>
                 nodesize <span class="o">=</span> <span class="m">25</span><span class="p">,</span> ntrees <span class="o">=</span> <span class="m">200</span><span class="p">)</span>
 </pre></div>
 
@@ -730,7 +731,7 @@ cpGrid <span class="o">&lt;-</span> <span class="kp">expand.grid</span><span cla
 <div class="prompt input_prompt">In&nbsp;[57]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre>train<span class="p">(</span>Reverse <span class="o">~</span> Circuit <span class="o">+</span> Issue <span class="o">+</span> Petitioner <span class="o">+</span> Respondent <span class="o">+</span> LowerCourt <span class="o">+</span> Unconst<span class="p">,</span> data <span class="o">=</span> train<span class="p">,</span> 
+<div class=" highlight hl-r"><pre>train<span class="p">(</span>Reverse <span class="o">~</span> Circuit <span class="o">+</span> Issue <span class="o">+</span> Petitioner <span class="o">+</span> Respondent <span class="o">+</span> LowerCourt <span class="o">+</span> Unconst<span class="p">,</span> data <span class="o">=</span> train<span class="p">,</span>
                 method <span class="o">=</span> <span class="s">&quot;rpart&quot;</span><span class="p">,</span> trControl <span class="o">=</span> numFolds<span class="p">,</span> tuneGrid <span class="o">=</span> cpGrid<span class="p">)</span>
 </pre></div>
 
@@ -746,70 +747,70 @@ cpGrid <span class="o">&lt;-</span> <span class="kp">expand.grid</span><span cla
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>CART 
+<pre>CART
 
 396 samples
   8 predictor
-  2 classes: &apos;0&apos;, &apos;1&apos; 
+  2 classes: &apos;0&apos;, &apos;1&apos;
 
 No pre-processing
-Resampling: Cross-Validated (10 fold) 
+Resampling: Cross-Validated (10 fold)
 
-Summary of sample sizes: 356, 356, 357, 356, 357, 356, ... 
+Summary of sample sizes: 356, 356, 357, 356, 357, 356, ...
 
 Resampling results across tuning parameters:
 
   cp    Accuracy  Kappa   Accuracy SD  Kappa SD
-  0.01  0.644     0.2655  0.07412      0.1556  
-  0.02  0.639     0.2572  0.05265      0.1110  
-  0.03  0.626     0.2373  0.05089      0.1074  
-  0.04  0.626     0.2410  0.05089      0.1108  
-  0.05  0.644     0.2833  0.04053      0.0795  
-  0.06  0.644     0.2833  0.04053      0.0795  
-  0.07  0.644     0.2833  0.04053      0.0795  
-  0.08  0.644     0.2833  0.04053      0.0795  
-  0.09  0.644     0.2833  0.04053      0.0795  
-  0.10  0.644     0.2833  0.04053      0.0795  
-  0.11  0.644     0.2833  0.04053      0.0795  
-  0.12  0.644     0.2833  0.04053      0.0795  
-  0.13  0.644     0.2833  0.04053      0.0795  
-  0.14  0.644     0.2833  0.04053      0.0795  
-  0.15  0.644     0.2833  0.04053      0.0795  
-  0.16  0.644     0.2833  0.04053      0.0795  
-  0.17  0.644     0.2833  0.04053      0.0795  
-  0.18  0.644     0.2833  0.04053      0.0795  
-  0.19  0.644     0.2833  0.04053      0.0795  
-  0.20  0.626     0.2398  0.04371      0.1029  
-  0.21  0.611     0.2004  0.04114      0.1123  
-  0.22  0.571     0.0855  0.03326      0.1113  
-  0.23  0.545     0.0000  0.00596      0.0000  
-  0.24  0.545     0.0000  0.00596      0.0000  
-  0.25  0.545     0.0000  0.00596      0.0000  
-  0.26  0.545     0.0000  0.00596      0.0000  
-  0.27  0.545     0.0000  0.00596      0.0000  
-  0.28  0.545     0.0000  0.00596      0.0000  
-  0.29  0.545     0.0000  0.00596      0.0000  
-  0.30  0.545     0.0000  0.00596      0.0000  
-  0.31  0.545     0.0000  0.00596      0.0000  
-  0.32  0.545     0.0000  0.00596      0.0000  
-  0.33  0.545     0.0000  0.00596      0.0000  
-  0.34  0.545     0.0000  0.00596      0.0000  
-  0.35  0.545     0.0000  0.00596      0.0000  
-  0.36  0.545     0.0000  0.00596      0.0000  
-  0.37  0.545     0.0000  0.00596      0.0000  
-  0.38  0.545     0.0000  0.00596      0.0000  
-  0.39  0.545     0.0000  0.00596      0.0000  
-  0.40  0.545     0.0000  0.00596      0.0000  
-  0.41  0.545     0.0000  0.00596      0.0000  
-  0.42  0.545     0.0000  0.00596      0.0000  
-  0.43  0.545     0.0000  0.00596      0.0000  
-  0.44  0.545     0.0000  0.00596      0.0000  
-  0.45  0.545     0.0000  0.00596      0.0000  
-  0.46  0.545     0.0000  0.00596      0.0000  
-  0.47  0.545     0.0000  0.00596      0.0000  
-  0.48  0.545     0.0000  0.00596      0.0000  
-  0.49  0.545     0.0000  0.00596      0.0000  
-  0.50  0.545     0.0000  0.00596      0.0000  
+  0.01  0.644     0.2655  0.07412      0.1556
+  0.02  0.639     0.2572  0.05265      0.1110
+  0.03  0.626     0.2373  0.05089      0.1074
+  0.04  0.626     0.2410  0.05089      0.1108
+  0.05  0.644     0.2833  0.04053      0.0795
+  0.06  0.644     0.2833  0.04053      0.0795
+  0.07  0.644     0.2833  0.04053      0.0795
+  0.08  0.644     0.2833  0.04053      0.0795
+  0.09  0.644     0.2833  0.04053      0.0795
+  0.10  0.644     0.2833  0.04053      0.0795
+  0.11  0.644     0.2833  0.04053      0.0795
+  0.12  0.644     0.2833  0.04053      0.0795
+  0.13  0.644     0.2833  0.04053      0.0795
+  0.14  0.644     0.2833  0.04053      0.0795
+  0.15  0.644     0.2833  0.04053      0.0795
+  0.16  0.644     0.2833  0.04053      0.0795
+  0.17  0.644     0.2833  0.04053      0.0795
+  0.18  0.644     0.2833  0.04053      0.0795
+  0.19  0.644     0.2833  0.04053      0.0795
+  0.20  0.626     0.2398  0.04371      0.1029
+  0.21  0.611     0.2004  0.04114      0.1123
+  0.22  0.571     0.0855  0.03326      0.1113
+  0.23  0.545     0.0000  0.00596      0.0000
+  0.24  0.545     0.0000  0.00596      0.0000
+  0.25  0.545     0.0000  0.00596      0.0000
+  0.26  0.545     0.0000  0.00596      0.0000
+  0.27  0.545     0.0000  0.00596      0.0000
+  0.28  0.545     0.0000  0.00596      0.0000
+  0.29  0.545     0.0000  0.00596      0.0000
+  0.30  0.545     0.0000  0.00596      0.0000
+  0.31  0.545     0.0000  0.00596      0.0000
+  0.32  0.545     0.0000  0.00596      0.0000
+  0.33  0.545     0.0000  0.00596      0.0000
+  0.34  0.545     0.0000  0.00596      0.0000
+  0.35  0.545     0.0000  0.00596      0.0000
+  0.36  0.545     0.0000  0.00596      0.0000
+  0.37  0.545     0.0000  0.00596      0.0000
+  0.38  0.545     0.0000  0.00596      0.0000
+  0.39  0.545     0.0000  0.00596      0.0000
+  0.40  0.545     0.0000  0.00596      0.0000
+  0.41  0.545     0.0000  0.00596      0.0000
+  0.42  0.545     0.0000  0.00596      0.0000
+  0.43  0.545     0.0000  0.00596      0.0000
+  0.44  0.545     0.0000  0.00596      0.0000
+  0.45  0.545     0.0000  0.00596      0.0000
+  0.46  0.545     0.0000  0.00596      0.0000
+  0.47  0.545     0.0000  0.00596      0.0000
+  0.48  0.545     0.0000  0.00596      0.0000
+  0.49  0.545     0.0000  0.00596      0.0000
+  0.50  0.545     0.0000  0.00596      0.0000
 
 Accuracy was used to select the optimal model using  the largest value.
 The final value used for the model was cp = 0.19. </pre>
@@ -826,7 +827,7 @@ The final value used for the model was cp = 0.19. </pre>
 <div class="prompt input_prompt">In&nbsp;[58]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre>tree_ModelCV <span class="o">&lt;-</span> rpart<span class="p">(</span>Reverse <span class="o">~</span> Circuit <span class="o">+</span> Issue <span class="o">+</span> Petitioner <span class="o">+</span> Respondent <span class="o">+</span> LowerCourt <span class="o">+</span> Unconst<span class="p">,</span> data <span class="o">=</span> train<span class="p">,</span> 
+<div class=" highlight hl-r"><pre>tree_ModelCV <span class="o">&lt;-</span> rpart<span class="p">(</span>Reverse <span class="o">~</span> Circuit <span class="o">+</span> Issue <span class="o">+</span> Petitioner <span class="o">+</span> Respondent <span class="o">+</span> LowerCourt <span class="o">+</span> Unconst<span class="p">,</span> data <span class="o">=</span> train<span class="p">,</span>
                     method <span class="o">=</span> <span class="s">&quot;class&quot;</span><span class="p">,</span> cp <span class="o">=</span> <span class="m">0.19</span><span class="p">)</span>
 treeCV_Prediction <span class="o">&lt;-</span> predict<span class="p">(</span>tree_ModelCV<span class="p">,</span> newdata<span class="o">=</span>test<span class="p">,</span> type <span class="o">=</span> <span class="s">&quot;class&quot;</span><span class="p">)</span>
 <span class="kp">table</span><span class="p">(</span>test<span class="o">$</span>Reverse<span class="p">,</span> treeCV_Prediction<span class="p">)</span>
@@ -910,10 +911,10 @@ treeCV_Prediction <span class="o">&lt;-</span> predict<span class="p">(</span>tr
 </div>
     </div>
   </div>
-  
+
   <footer>
 	  <p style ="text-align:left">&copy; 2015 Desta Hailemariam </p>
 	</footer>
-  
+
 </body>
 </html>

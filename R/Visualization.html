@@ -1,12 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-<style>
-div.prompt {display:none}
-</style>
-
-
   <head>
     <meta charset="ITF-8">
 	<title>Desthood</title>
@@ -22,29 +15,30 @@ div.prompt {display:none}
       document.createElement("section");
 	</script>
 	<![endif]-->
- 
+
   <head>
   <body>
 	<header class="banner">
 	  <h1> Desta Hailemariam</h1>
-	  	  	  
+
 	  <p> Ph.D. candidate, <a style="color:#ffff00; text-decoration:none" href="http://www.binghamton.edu/ssie/index.html" target="_blank">Binghamton University </span> </a> </p>
-	 
-	  <p> Graduate Research Associate, Watson Institute for Systems Excellence - <a style="color:#ffff00; text-decoration:none" href="https://www.binghamton.edu/watson/research/wise/" target="_blank">WISE </span></a> 
+
+	  <p> Graduate Research Associate, Watson Institute for Systems Excellence - <a style="color:#ffff00; text-decoration:none" href="https://www.binghamton.edu/watson/research/wise/" target="_blank">WISE </span></a>
 	  <span style="width:120px;display:inline-block"></span> <a  style="color:#ffff00; text-decoration:none" href ="../resume.pdf"   target="_blank">Resume</a> <span style="width:100px;display:inline-block"></span> </p>
-	  
+
 	</header>
-	
-	<nav>
-	  <ul>
-	    <li><a style="text-decoration:none" href="http://datascience-is-fun.com/">Home</a></li>
-	    <li><a style="text-decoration:none" href="http://datascience-is-fun.com/Profile/index.html">Profile</a></li>
-	    <li><a style="text-decoration:none" href="http://datascience-is-fun.com/R/index.html">R</a></li>
-	    <li><a style="text-decoration:none" href="http://datascience-is-fun.com/Python/index.html">Python</a></li>
-		<li><a style="text-decoration:none" href="http://datascience-is-fun.com/Tableau/index.html">Tableau</a></li>
-	  </ul> 
-	</nav>
-	
+
+  <nav>
+    <ul>
+      <li><a style="text-decoration:none" href="http://datasciencepage.com/">Home</a></li>
+      <li><a style="text-decoration:none" href="http://datasciencepage.com/Profile/index.html">Profile</a></li>
+      <li><a style="text-decoration:none" href="http://datasciencepage.com/R/index.html">R</a></li>
+      <li><a style="text-decoration:none" href="http://datasciencepage.com/Python/index.html">Python</a></li>
+      <li><a style="text-decoration:none" href="http://datasciencepage.com/Tableau/index.html">Tableau</a></li>
+      <li><a style="text-decoration:none" href="http://datasciencepage.com/Profile/contact.html">Contact Me</a></li>
+    </ul>
+  </nav>
+
 <title>Data Visualization</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
@@ -172,14 +166,14 @@ div#notebook {
   div.cell {
     display: block;
     page-break-inside: avoid;
-  } 
-  div.output_wrapper { 
-    display: block;
-    page-break-inside: avoid; 
   }
-  div.output { 
+  div.output_wrapper {
     display: block;
-    page-break-inside: avoid; 
+    page-break-inside: avoid;
+  }
+  div.output {
+    display: block;
+    page-break-inside: avoid;
   }
 }
 </style>
@@ -522,11 +516,11 @@ Call:
 lm(formula = Under15 ~ FertilityRate, data = WHO)
 
 Residuals:
-     Min       1Q   Median       3Q      Max 
--10.3340  -3.0347   0.0219   2.9298   9.8841 
+     Min       1Q   Median       3Q      Max
+-10.3340  -3.0347   0.0219   2.9298   9.8841
 
 Coefficients:
-              Estimate Std. Error t value Pr(&gt;|t|)    
+              Estimate Std. Error t value Pr(&gt;|t|)
 (Intercept)     9.0161     0.6221   14.49   &lt;2e-16 ***
 FertilityRate   6.7689     0.1891   35.80   &lt;2e-16 ***
 ---
@@ -534,7 +528,7 @@ Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &
 
 Residual standard error: 3.777 on 181 degrees of freedom
   (11 observations deleted due to missingness)
-Multiple R-squared:  0.8763,	Adjusted R-squared:  0.8756 
+Multiple R-squared:  0.8763,	Adjusted R-squared:  0.8756
 F-statistic:  1282 on 1 and 181 DF,  p-value: &lt; 2.2e-16
 </pre>
 </div>
@@ -571,11 +565,11 @@ Call:
 lm(formula = Under15 ~ log(FertilityRate), data = WHO)
 
 Residuals:
-     Min       1Q   Median       3Q      Max 
--10.3131  -1.7742   0.0446   1.7440   7.7174 
+     Min       1Q   Median       3Q      Max
+-10.3131  -1.7742   0.0446   1.7440   7.7174
 
 Coefficients:
-                   Estimate Std. Error t value Pr(&gt;|t|)    
+                   Estimate Std. Error t value Pr(&gt;|t|)
 (Intercept)          7.6540     0.4478   17.09   &lt;2e-16 ***
 log(FertilityRate)  22.0547     0.4175   52.82   &lt;2e-16 ***
 ---
@@ -583,7 +577,7 @@ Signif. codes:  0 &apos;***&apos; 0.001 &apos;**&apos; 0.01 &apos;*&apos; 0.05 &
 
 Residual standard error: 2.65 on 181 degrees of freedom
   (11 observations deleted due to missingness)
-Multiple R-squared:  0.9391,	Adjusted R-squared:  0.9387 
+Multiple R-squared:  0.9391,	Adjusted R-squared:  0.9387
 F-statistic:  2790 on 1 and 181 DF,  p-value: &lt; 2.2e-16
 </pre>
 </div>
@@ -620,8 +614,8 @@ F-statistic:  2790 on 1 and 181 DF,  p-value: &lt; 2.2e-16
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span class="c1"># linear model with 95% confidence interval</span>
-ggplot<span class="p">(</span>WHO<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span><span class="kp">log</span><span class="p">(</span>FertilityRate<span class="p">),</span> y<span class="o">=</span>Under15<span class="p">))</span> 
-<span class="o">+</span> geom_point<span class="p">(</span>color<span class="o">=</span><span class="s">&quot;darkred&quot;</span><span class="p">,</span> size<span class="o">=</span><span class="m">2</span><span class="p">,</span> shape<span class="o">=</span><span class="m">20</span><span class="p">)</span> 
+ggplot<span class="p">(</span>WHO<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span><span class="kp">log</span><span class="p">(</span>FertilityRate<span class="p">),</span> y<span class="o">=</span>Under15<span class="p">))</span>
+<span class="o">+</span> geom_point<span class="p">(</span>color<span class="o">=</span><span class="s">&quot;darkred&quot;</span><span class="p">,</span> size<span class="o">=</span><span class="m">2</span><span class="p">,</span> shape<span class="o">=</span><span class="m">20</span><span class="p">)</span>
 <span class="o">+</span> stat_smooth<span class="p">(</span>method<span class="o">=</span><span class="s">&quot;lm&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -1019,7 +1013,7 @@ DailyCrimeCounts
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>           
+<pre>
                0    1    2    3    4    5    6    7    8    9   10   11   12
   Friday    1873  932  743  560  473  602  839 1203 1268 1286  938  822 1207
   Monday    1900  825  712  527  415  542  772 1123 1323 1235  971  737 1129
@@ -1028,7 +1022,7 @@ DailyCrimeCounts
   Thursday  1856  816  696  508  400  534  799 1135 1298 1301  932  731 1093
   Tuesday   1691  777  603  464  414  520  845 1118 1175 1174  948  786 1108
   Wednesday 1814  790  619  469  396  561  862 1140 1329 1237  947  763 1225
-           
+
               13   14   15   16   17   18   19   20   21   22   23
   Friday     857  937 1140 1165 1318 1623 1652 1736 1881 2308 1921
   Monday     824  958 1059 1136 1252 1518 1503 1622 1815 2009 1490
@@ -1515,7 +1509,7 @@ ggmap<span class="p">(</span>chicago<span class="p">)</span> <span class="o">+</
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span class="c1"># Load our data:</span>
-murders <span class="o">=</span> read.csv<span class="p">(</span><span class="s">&quot;Data/murders.csv&quot;</span><span class="p">)</span> 
+murders <span class="o">=</span> read.csv<span class="p">(</span><span class="s">&quot;Data/murders.csv&quot;</span><span class="p">)</span>
 str<span class="p">(</span>murders<span class="p">)</span>
 </pre></div>
 
@@ -1788,10 +1782,10 @@ ggplot<span class="p">(</span>murderMap<span class="p">,</span> aes<span class="
 </div>
     </div>
   </div>
-  
+
   <footer>
 	  <p style ="text-align:left">&copy; 2015 Desta Hailemariam </p>
 	</footer>
-  
+
 </body>
 </html>
