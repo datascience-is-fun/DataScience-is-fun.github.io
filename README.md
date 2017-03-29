@@ -1,1 +1,1 @@
-# datascience-is-fun.github.io
+# datasciencepage.github.io
